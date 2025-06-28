@@ -6,11 +6,11 @@ import 'package:ggram_online/Routes/route_name.dart';
 import 'package:ggram_online/Theme/app_color.dart';
 import 'package:ggram_online/Widgets/comoon_appbar.dart';
 
-import '../../Theme/app_textstyle.dart';
-import '../../Widgets/common_button.dart';
-import '../../Widgets/common_textfield.dart';
-import '../../Widgets/custom_popup.dart';
-import 'home_controller/report_road_controller.dart';
+import '../../../Theme/app_textstyle.dart';
+import '../../../Widgets/common_button.dart';
+import '../../../Widgets/common_textfield.dart';
+import '../../../Widgets/custom_popup.dart';
+import '../home_controller/report_road_controller.dart';
 
 
 class ReportRoadScreen extends GetView<ReportRoadController> {

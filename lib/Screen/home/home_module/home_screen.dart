@@ -4,17 +4,16 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:ggram_online/Screen/home/home_controller/home_controller.dart';
 import 'package:ggram_online/Theme/app_color.dart';
-import '../../Routes/route_name.dart';
-import '../../Theme/app_textstyle.dart';
-import '../../Widgets/comoon_appbar.dart';
-import '../../Widgets/custom_drawer.dart';
-import '../BottomNavBar/bottom_nav_bar_controller.dart';
+import '../../../Routes/route_name.dart';
+import '../../../Theme/app_textstyle.dart';
+import '../../../Widgets/comoon_appbar.dart';
+import '../../../Widgets/custom_drawer.dart';
+import '../../BottomNavBar/bottom_nav_bar_controller.dart';
 
 class HomeScreen extends GetView<HomeController> {
-
-   HomeScreen({super.key,});
-
-  final controller = Get.put(HomeController());
+  const HomeScreen({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +59,7 @@ class HomeScreen extends GetView<HomeController> {
         ),
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/image/Splash.png'),
             opacity: 0.2,
@@ -99,7 +98,7 @@ Widget _buildBody() {
           //   zoomControlsEnabled: false,
           // ),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -107,13 +106,12 @@ Widget _buildBody() {
               _buildContainer("assets/icons/trash.svg", "Report Trash\nIssue",
                   () {
                 // Handle tap
-
               }),
               const SizedBox(width: 16),
               _buildContainer("assets/icons/road.svg", "Report Road \nIssue",
                   () {
                 // Handle tap
-                    Get.toNamed(RouteName.reportRoadScreen);
+                Get.toNamed(RouteName.reportRoadScreen);
               }),
               const SizedBox(width: 16),
               _buildContainer("assets/icons/road.svg", "Report Road \nIssue",
@@ -123,7 +121,7 @@ Widget _buildBody() {
             ],
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 100,
         )
       ],
@@ -131,8 +129,7 @@ Widget _buildBody() {
   );
 }
 
-Widget _buildContainer(
-    String iconPath, String label, VoidCallback onTap) {
+Widget _buildContainer(String iconPath, String label, VoidCallback onTap) {
   return GestureDetector(
     onTap: onTap,
     child: Container(
@@ -157,7 +154,7 @@ Widget _buildContainer(
             Container(
               height: 64,
               width: 64,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: AppColor.buttonColor,
               ),

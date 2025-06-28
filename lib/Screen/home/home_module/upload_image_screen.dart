@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 import 'package:ggram_online/Routes/route_name.dart';
 import 'package:ggram_online/Widgets/comoon_appbar.dart';
 
-import '../../Theme/app_color.dart';
-import '../../Theme/app_textstyle.dart';
-import '../../Widgets/common_button.dart';
-import '../../Widgets/custom_popup.dart';
-import 'home_controller/upload_image_controller.dart';
+import '../../../Theme/app_color.dart';
+import '../../../Theme/app_textstyle.dart';
+import '../../../Widgets/common_button.dart';
+import '../../../Widgets/custom_popup.dart';
+import '../home_controller/upload_image_controller.dart';
 
 class UploadImageScreen extends StatelessWidget {
   const UploadImageScreen({super.key});
@@ -19,13 +19,14 @@ class UploadImageScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColor.backgroundContainer,
-      appBar: CommonAppBar(
+      appBar: const CommonAppBar(
         title: "Upload Image",
         centerTitle: true,
       ),
       body: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
+        height: double.infinity,
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/image/Splash.png'),
             opacity: 0.2,
@@ -55,7 +56,7 @@ class UploadImageScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(40),
                         border: Border.all(color: AppColor.textSecondary),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           "Retake Photo",
                           style: AppTextStyles.splashSubTitle,
@@ -93,7 +94,7 @@ class UploadImageScreen extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                     color: Colors.grey.shade300,
-                    offset: Offset(0, 3),
+                    offset: const Offset(0, 3),
                     blurRadius: 10,
                     spreadRadius: 0)
               ],
@@ -110,36 +111,32 @@ class UploadImageScreen extends StatelessWidget {
                       child: Container(
                         height: 80,
                         width: 80,
-                        decoration: BoxDecoration(
+                        padding: const EdgeInsets.all(20.0),
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColor.buttonColor,
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: SvgPicture.asset("assets/icons/camera.svg"),
-                        ),
+                        child: SvgPicture.asset("assets/icons/camera.svg"),
                       ),
                     ),
-                    SizedBox(width: 30),
+                    const SizedBox(width: 30),
                     GestureDetector(
                       onTap: () => controller.pickFromGallery(),
                       child: Container(
                         height: 80,
+                        padding: const EdgeInsets.all(20.0),
                         width: 80,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColor.buttonColor,
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: SvgPicture.asset("assets/icons/gallery.svg"),
-                        ),
+                        child: SvgPicture.asset("assets/icons/gallery.svg"),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 24),
-                Text(
+                const SizedBox(height: 24),
+                const Text(
                   "Upload Photo Using",
                   style: AppTextStyles.reportForm,
                 ),

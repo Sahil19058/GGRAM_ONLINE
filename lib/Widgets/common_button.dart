@@ -7,17 +7,17 @@ class InnerShadowButton extends StatelessWidget {
   final double height;
 
   const InnerShadowButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.onPressed,
     this.width = double.infinity,
     this.height = 52,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     const backgroundColor = Color(0xFFFF594C);
-    const innerShadowColor = Color.fromRGBO(0, 0, 0, 0.12); // 12% opacity black
+    const innerShadowColor = Color.fromRGBO(0, 0, 0, 0.12);
 
     return GestureDetector(
       onTap: onPressed,

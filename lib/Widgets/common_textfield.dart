@@ -84,7 +84,7 @@ class TextFieldView extends StatelessWidget {
               hintText: hintText.tr,
               prefixIcon: prefixIcon,
               suffixIcon: suffixIcon,
-              hintStyle: TextStyle(
+              hintStyle: const TextStyle(
                 fontFamily: 'Inter',
                 fontWeight: FontWeight.w500,
                 fontSize: 15,
@@ -106,7 +106,7 @@ class TextFieldView extends StatelessWidget {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(30),
-                borderSide: BorderSide(
+                borderSide: const BorderSide(
                   color: AppColor.outlineBorder,
                   width: 0,
                 ),

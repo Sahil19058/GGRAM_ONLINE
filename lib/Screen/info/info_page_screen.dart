@@ -13,7 +13,6 @@ import '../BottomNavBar/bottom_nav_bar_controller.dart';
 class InfoPageScreen extends GetView<InfoPageController> {
    InfoPageScreen({super.key});
 
-  final controller = Get.put(InfoPageController());
 
   @override
   Widget build(BuildContext context) {
@@ -37,43 +36,39 @@ class InfoPageScreen extends GetView<InfoPageController> {
           )
         ],
         title: 'Sector 64',
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 19),
-          child: Container(
-            decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [
-              BoxShadow(
-                offset: const Offset(0, -6),
-                blurRadius: 10,
-                spreadRadius: 0,
-                color: Colors.grey.shade300,
-                inset: true,
-                blurStyle: BlurStyle.inner,
-              ),
-            ]),
-            child: Center(
-                child: IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset("assets/icons/landmark.svg"),
-            )),
-          ),
+        leading: Container(
+          margin: const EdgeInsets.only(left: 19),
+          decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [
+            BoxShadow(
+              offset: const Offset(0, -6),
+              blurRadius: 10,
+              spreadRadius: 0,
+              color: Colors.grey.shade300,
+              inset: true,
+              blurStyle: BlurStyle.inner,
+            ),
+          ]),
+          child: Center(
+              child: IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset("assets/icons/landmark.svg"),
+          )),
         ),
       ),
       body: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/image/Splash.png'),
             opacity: 0.2,
             fit: BoxFit.fill,
           ),
         ),
-        child: Padding(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.all(16),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [_buildBody()],
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [_buildBody()],
           ),
         ),
       ),
@@ -93,21 +88,21 @@ class InfoPageScreen extends GetView<InfoPageController> {
           ),
         ),
         const SizedBox(height: 25),
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
+          children: [
             _InfoCard(count: "21", label: "Ward"),
             _InfoCard(count: "03", label: "Zone"),
             _InfoCard(count: "65", label: "Sector"),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         ListView.builder(
           padding: EdgeInsets.zero,
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemCount: controller.officials.length,
           itemBuilder: (context, index) {
             final official = controller.officials[index];
@@ -118,7 +113,7 @@ class InfoPageScreen extends GetView<InfoPageController> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(16),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Colors.black12,
                     blurRadius: 8,
@@ -154,22 +149,22 @@ class InfoPageScreen extends GetView<InfoPageController> {
                           official["designation"] ?? "",
                           style: AppTextStyles.infoPageContainerSubTitle,
                         ),
-                        SizedBox(height: 12),
+                        const SizedBox(height: 12),
                         Row(
                           children: [
                             SvgPicture.asset("assets/icons/circle-phone.svg"),
-                            SizedBox(width: 5),
+                            const SizedBox(width: 5),
                             Text(
                               official["phone"] ?? "",
                               style: AppTextStyles.phoneNumber,
                             ),
                           ],
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Row(
                           children: [
                             SvgPicture.asset("assets/icons/envelope.svg"),
-                            SizedBox(width: 5),
+                            const SizedBox(width: 5),
                             Expanded(
                               child: Text(
                                 official["email"] ?? "",
@@ -188,11 +183,11 @@ class InfoPageScreen extends GetView<InfoPageController> {
           },
         ),
 
-        Text("Executive Engineers",style: AppTextStyles.splashSubTitle,),
+        const Text("Executive Engineers",style: AppTextStyles.splashSubTitle,),
         ListView.builder(
           padding: EdgeInsets.zero,
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemCount: 2,
           itemBuilder: (context, index) {
             return Container(
@@ -202,7 +197,7 @@ class InfoPageScreen extends GetView<InfoPageController> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(16),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Colors.black12,
                     blurRadius: 8,
@@ -230,18 +225,18 @@ class InfoPageScreen extends GetView<InfoPageController> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Aman Deep Singh",style: AppTextStyles.splashSubTitle,),
-                        Text("Joint Secretary",style: AppTextStyles.infoSmallSubTitle),
-                        SizedBox(height: 10),
+                        const Text("Aman Deep Singh",style: AppTextStyles.splashSubTitle,),
+                        const Text("Joint Secretary",style: AppTextStyles.infoSmallSubTitle),
+                        const SizedBox(height: 10),
                         Row(
                           children: [
                             SvgPicture.asset("assets/icons/circle-phone.svg"),
-                            SizedBox(width: 5,),
-                            Text("+91-987654321",style: AppTextStyles.phoneNumber,),
-                            SizedBox(width: 5,),
+                            const SizedBox(width: 5,),
+                            const Text("+91-987654321",style: AppTextStyles.phoneNumber,),
+                            const SizedBox(width: 5,),
                             SvgPicture.asset("assets/icons/envelope.svg"),
-                            SizedBox(width: 5,),
-                            Expanded(child: Text("raisinghrathee@gov.in",style: AppTextStyles.phoneNumber,overflow: TextOverflow.ellipsis,))
+                            const SizedBox(width: 5,),
+                            const Expanded(child: Text("raisinghrathee@gov.in",style: AppTextStyles.phoneNumber,overflow: TextOverflow.ellipsis,))
                           ],
                         ),
                       ],
@@ -252,7 +247,7 @@ class InfoPageScreen extends GetView<InfoPageController> {
             );
           },
         ),
-        SizedBox(
+        const SizedBox(
           height: 50,
         )
       ],
@@ -279,7 +274,7 @@ class _InfoCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Colors.black12,
             blurRadius: 8,
@@ -293,14 +288,14 @@ class _InfoCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Spacer(),
+              const Spacer(),
               SvgPicture.asset("assets/icons/interrogation.svg")
             ],
           ),
           FittedBox(
             child: Text(
               count,
-              style: TextStyle(
+              style: const TextStyle(
                   color: AppColor.buttonColor,
                   fontSize: 48,
                   fontWeight: FontWeight.w700,
@@ -309,7 +304,7 @@ class _InfoCard extends StatelessWidget {
           ),
           Text(
             label,
-            style: TextStyle(
+            style: const TextStyle(
                 color: AppColor.textSecondary,
                 fontSize: 18,
                 fontWeight: FontWeight.w500,

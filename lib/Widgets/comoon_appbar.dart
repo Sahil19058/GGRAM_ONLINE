@@ -25,7 +25,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
     return Material(
       elevation: 4,
       shadowColor: Colors.grey.withOpacity(0.2),
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(22),
           bottomRight: Radius.circular(22),
@@ -41,13 +41,13 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
           padding: const EdgeInsets.only(left: 30),
           child: InkWell(
             onTap: onTap ?? () => Navigator.of(context).pop(),
-            child: Container(child: SvgPicture.asset("assets/icons/back.svg")),
+            child: SvgPicture.asset("assets/icons/back.svg"),
           ),
         )
         ),
         foregroundColor: AppColor.textSecondary,
         backgroundColor: AppColor.backgroundContainer,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(22),
             bottomRight: Radius.circular(22),

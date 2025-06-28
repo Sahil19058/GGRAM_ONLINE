@@ -28,8 +28,8 @@ class CustomSideDrawer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // User Info
-            Padding(
-              padding: const EdgeInsets.all(16),
+            const Padding(
+              padding: EdgeInsets.all(16),
               child: Row(
                 children: [
                   SizedBox(height: 100,),
@@ -38,13 +38,13 @@ class CustomSideDrawer extends StatelessWidget {
                     backgroundImage: AssetImage(
                         "assets/image/profile_image.png"), // replace with actual image
                   ),
-                  const SizedBox(width: 12),
+                  SizedBox(width: 12),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("Good Morning", style: AppTextStyles.drawerMinimal),
-                      const SizedBox(height: 4),
-                      const Text(
+                      SizedBox(height: 4),
+                      Text(
                           "Anna Stenkovic", style: AppTextStyles.drawerTitle),
                     ],
                   )
@@ -92,8 +92,8 @@ class CustomSideDrawer extends StatelessWidget {
           onTap: onTap,
         ),
         if (!isLast)
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
             child: Divider(color: AppColor.dividerColor, height: 1),
           ),
       ],

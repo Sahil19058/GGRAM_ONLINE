@@ -19,9 +19,9 @@ import '../Screen/BottomNavBar/bottom_nav_bar.dart';
 import '../Screen/Splesh/splash_binding.dart';
 import '../Screen/Splesh/splesh_screen.dart';
 import '../Screen/home/home_binding/upload_image_binding.dart';
-import '../Screen/home/home_screen.dart';
-import '../Screen/home/report_road_screen.dart';
-import '../Screen/home/upload_image_screen.dart';
+import '../Screen/home/home_module/home_screen.dart';
+import '../Screen/home/home_module/report_road_screen.dart';
+import '../Screen/home/home_module/upload_image_screen.dart';
 import '../Screen/info/info_page_screen.dart';
 import '../Screen/info/official_detail_screen.dart';
 
@@ -35,37 +35,37 @@ class AppRoute {
         ),
         GetPage(
             name: RouteName.loginScreen,
-            page: () => LoginScreen(),
+            page: () => const LoginScreen(),
             binding: LoginBinding()
         ),
         GetPage(
             name: RouteName.otpScreen,
-            page: () => OtpScreen(),
+            page: () => const OtpScreen(),
             binding: OtpBinding()
         ),
         GetPage(
             name: RouteName.introductionScreen,
-            page: () => IntroductionScreen(),
+            page: () => const IntroductionScreen(),
             binding: IntroductionBinding()
         ),
         GetPage(
             name: RouteName.surveyScreen,
-            page: () => SurveyScreen(),
+            page: () => const SurveyScreen(),
             binding: SurveyBinding()
         ),
         GetPage(
             name: RouteName.supportScreen,
-            page: () => SupportScreen(),
+            page: () => const SupportScreen(),
             binding: SupportBinding()
         ),
         GetPage(
             name: RouteName.bottomNavBar,
-            page: () => BottomNavBar(),
+            page: () => const BottomNavBar(),
             binding: BottomNavBarBinding()
         ),
         GetPage(
             name: RouteName.homeScreen,
-            page: () => HomeScreen(),
+            page: () => const HomeScreen(),
             binding: HomeBinding()
         ),
         GetPage(
@@ -75,7 +75,7 @@ class AppRoute {
         ),
         GetPage(
             name: RouteName.uploadImageScreen,
-            page: () => UploadImageScreen(),
+            page: () => const UploadImageScreen(),
             binding: UploadImageBinding()
         ),
         GetPage(
@@ -85,7 +85,7 @@ class AppRoute {
         ),
         GetPage(
             name: RouteName.officialDetailScreen,
-            page: () => OfficialDetailScreen(),
+            page: () => const OfficialDetailScreen(),
             binding: OfficialDetailBining()
         ),
       ];

@@ -3,27 +3,15 @@ import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ggram_online/Theme/app_color.dart';
 import '../../Widgets/custom_drawer.dart';
-import '../home/home_screen.dart';
+import '../home/home_module/home_screen.dart';
 import '../info/info_page_screen.dart';
 import 'bottom_nav_bar_controller.dart';
 
 class BottomNavBar extends GetView<BottomNavController> {
-
-  final List<Widget> pages = [
-    HomeScreen(),
-    InfoPageScreen(),
-    Center(child: Text("Analytics Page", style: TextStyle(fontSize: 22))),
-  ];
-
-  final List<String> svgIcons = [
-    'assets/icons/home.svg',
-    'assets/icons/info.svg',
-    'assets/icons/analytics.svg',
-  ];
+  const BottomNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       key: controller.scaffoldKey,
       drawer: CustomSideDrawer(onLogout: () {
@@ -31,7 +19,7 @@ class BottomNavBar extends GetView<BottomNavController> {
       }),
       extendBody: true,
       backgroundColor: Colors.grey[200],
-      body: Obx(() => pages[controller.selectedIndex.value]),
+      body: Obx(() => controller.pages[controller.selectedIndex.value]),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Container(
@@ -39,7 +27,7 @@ class BottomNavBar extends GetView<BottomNavController> {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(32),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Colors.black12,
                 blurRadius: 10,
@@ -49,12 +37,12 @@ class BottomNavBar extends GetView<BottomNavController> {
           ),
           child: Obx(() => Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: List.generate(svgIcons.length, (index) {
+                children: List.generate(controller.svgIcons.length, (index) {
                   final isSelected = controller.selectedIndex.value == index;
                   return IconButton(
-                    padding: EdgeInsets.symmetric(horizontal: 40),
+                    padding: const EdgeInsets.symmetric(horizontal: 40),
                     icon: SvgPicture.asset(
-                      svgIcons[index],
+                      controller.svgIcons[index],
                       colorFilter: ColorFilter.mode(
                         isSelected
                             ? AppColor.buttonColor
