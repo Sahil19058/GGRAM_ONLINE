@@ -8,6 +8,7 @@ import '../../../Theme/app_textstyle.dart';
 import '../../../Widgets/common_button.dart';
 import '../../../Widgets/common_textfield.dart';
 import '../auth_controller/login_controller.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 class IntroductionScreen extends GetView<IntroductionController> {
   const IntroductionScreen({super.key});
@@ -15,32 +16,29 @@ class IntroductionScreen extends GetView<IntroductionController> {
   @override
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: double.infinity,
-      width: double.infinity,
-      decoration: const BoxDecoration(
-          color: AppColor.backgroundContainer,
-          image: DecorationImage(
-            fit: BoxFit.fill,
-            image: AssetImage("assets/image/Splash.png"),
-          )),
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        backgroundColor: Colors.transparent,
-        body: Container(
-          decoration: BoxDecoration(
-            color: AppColor.backgroundContainer.withOpacity(0.8),
-            borderRadius: BorderRadius.circular(40),
-          ),
-          margin:
-              const EdgeInsets.only(top: 40, bottom: 20, left: 16, right: 16),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-          child: SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: MediaQuery.of(context).size.height - 120,
+    return KeyboardVisibilityBuilder(
+      builder: (context, isKeyboardVisible) {
+        return Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+              color: AppColor.backgroundContainer,
+              image: DecorationImage(
+                fit: BoxFit.fill,
+                image: AssetImage("assets/image/Splash.png"),
+              )),
+          child: Scaffold(
+            resizeToAvoidBottomInset: false,
+            backgroundColor: Colors.transparent,
+            body: Container(
+              decoration: BoxDecoration(
+                color: AppColor.backgroundContainer.withOpacity(0.8),
+                borderRadius: BorderRadius.circular(40),
               ),
-              child: IntrinsicHeight(
+              margin: const EdgeInsets.only(
+                  top: 40, bottom: 20, left: 16, right: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+              child: SingleChildScrollView(
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -232,7 +230,6 @@ class IntroductionScreen extends GetView<IntroductionController> {
                       const SizedBox(
                         height: 30,
                       ),
-                      const Spacer(),
                       InnerShadowButton(
                         text: "Submit",
                         onPressed: () {
@@ -246,12 +243,17 @@ class IntroductionScreen extends GetView<IntroductionController> {
                           // }
                         },
                       ),
+                      SizedBox(
+                        height: isKeyboardVisible
+                            ? MediaQuery.of(context).viewInsets.bottom
+                            : 0,
+                      ),
                     ]),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
