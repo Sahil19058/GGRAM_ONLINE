@@ -1,6 +1,4 @@
-import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../Routes/route_name.dart';
@@ -34,7 +32,7 @@ class SupportScreen extends GetView<SupportController> {
           margin:
               const EdgeInsets.only(top: 40, bottom: 20, left: 16, right: 16),
           decoration: BoxDecoration(
-            color: AppColor.backgroundContainer.withOpacity(0.8),
+            color: AppColor.backgroundContainer.withValues(alpha: 0.8),
             borderRadius: BorderRadius.circular(40),
           ),
           child: SingleChildScrollView(

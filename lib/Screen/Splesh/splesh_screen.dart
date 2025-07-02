@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ggram_online/Screen/Splesh/splash_controller.dart';
-
 import '../../Theme/app_textstyle.dart';
 
 class SplashScreen extends GetView<SplashController> {

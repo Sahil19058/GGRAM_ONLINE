@@ -1,10 +1,7 @@
-import 'package:country_code_picker/country_code_picker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:ggram_online/Routes/route_name.dart';
-
 import '../../../Theme/app_color.dart';
 import '../../../Theme/app_textstyle.dart';
 import '../../../Widgets/common_button.dart';
@@ -29,10 +26,11 @@ class LoginScreen extends GetView<LoginController> {
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.transparent,
         body: Container(
+          height: double.infinity,
           margin: const EdgeInsets.only(top: 40, bottom: 20, left: 16, right: 16),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
           decoration: BoxDecoration(
-            color: AppColor.backgroundContainer.withOpacity(0.8),
+            color: AppColor.backgroundContainer.withValues(alpha: 0.8),
             borderRadius: BorderRadius.circular(40),
           ),
           child: Column(
@@ -50,12 +48,45 @@ class LoginScreen extends GetView<LoginController> {
               ),
               const SizedBox(height: 32),
               TextFieldView(
+                maxLength: 10,
+                counterText: '',
+                hintText: '000 000 0000',
                 title: "Contact No.",
-                controller: controller.phoneController,
-                hintText: '000 000 000',
                 keyBoardType: TextInputType.number,
+                // validator: (value) => AppValidations.validateContact(value),
+                prefixIcon: Obx(
+                      () => InkWell(
+                    onTap: () => controller.openCountryCodePicker(context),
+                    child: Container(
+                      height: 30,
+                      width: 90,
+                      color: Colors.transparent,
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: Row(
+                            children: [
+                              Text(
+                                "+${controller.selectedCountryCode.value?.phoneCode ?? 91}",
+                                style: AppTextStyles.selectHintText,
+                                // fontWeight: FontWeight.w600,
+                              ),
+                              const SizedBox(
+                                width: 8,
+                              ),
+                              SvgPicture.asset("assets/icons/country_picker_arrow.svg")
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                controller: controller.phoneController,
               ),
-              const Spacer(),
+              const SizedBox(
+                height: 48,
+              ),
               InnerShadowButton(
                 text: "LOGIN",
                 onPressed: () {
@@ -72,7 +103,8 @@ class LoginScreen extends GetView<LoginController> {
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       fontFamily: 'Inter',
-                      color: AppColor.textSecondary),
+                      color: AppColor.textSecondary
+                  ),
                 ),
               ),
               const SizedBox(
@@ -84,13 +116,15 @@ class LoginScreen extends GetView<LoginController> {
                   Card(
                     elevation: 5,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(40)),
+                        borderRadius: BorderRadius.circular(40)
+                    ),
                     child: Container(
                       height: 79,
                       width: 79,
                       decoration: const BoxDecoration(
                           shape: BoxShape.circle,
-                          color: AppColor.backgroundContainer),
+                          color: AppColor.backgroundContainer
+                      ),
                       child: Center(
                         child: Image.asset(
                           'assets/image/google.png',
@@ -106,7 +140,8 @@ class LoginScreen extends GetView<LoginController> {
                   Card(
                     elevation: 5,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(40)),
+                        borderRadius: BorderRadius.circular(40)
+                    ),
                     child: Container(
                       height: 79,
                       width: 79,

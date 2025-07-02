@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import '../Routes/route_name.dart';
 import '../Theme/app_color.dart';
 import '../Theme/app_textstyle.dart';
 
@@ -28,18 +31,23 @@ class CustomSideDrawer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // User Info
-            const Padding(
+             Padding(
               padding: EdgeInsets.all(16),
               child: Row(
                 children: [
                   SizedBox(height: 100,),
-                  CircleAvatar(
-                    radius: 30,
-                    backgroundImage: AssetImage(
-                        "assets/image/profile_image.png"), // replace with actual image
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed(RouteName.profileDetailScreen);
+                    },
+                    child: const CircleAvatar(
+                      radius: 30,
+                      backgroundImage: AssetImage(
+                          "assets/image/profile_image.png"), // replace with actual image
+                    ),
                   ),
-                  SizedBox(width: 12),
-                  Column(
+                  const SizedBox(width: 12),
+                  const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("Good Morning", style: AppTextStyles.drawerMinimal),
@@ -52,9 +60,16 @@ class CustomSideDrawer extends StatelessWidget {
               ),
             ),
             // Drawer Items
-            _drawerItem("editProfile.svg", "Edit Profile", () {}),
-            _drawerItem("FAQ.svg", "FAQ", () {}),
-            _drawerItem("contactUs.svg", "Contact Us", () {}),
+            // _drawerItem("editProfile.svg", "Edit Profile", () {
+            //   Get.back();
+            //   Get.toNamed(RouteName.editProfileScreen);
+            // }),
+            _drawerItem("FAQ.svg", "FAQ", () {
+              Get.toNamed(RouteName.faqScreen);
+            }),
+            _drawerItem("contactUs.svg", "Contact Us", () {
+              Get.toNamed(RouteName.contactUsScreen);
+            }),
             _drawerItem("aboutUs.svg", "About Us", () {}),
             _drawerItem("tellAFriend.svg", "Tell a Friend", () {}),
             _drawerItem("logout.svg", "Logout", onLogout,isLast: true),

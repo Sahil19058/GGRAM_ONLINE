@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ggram_online/Routes/route_name.dart';
@@ -7,7 +6,6 @@ import '../../../Theme/app_textstyle.dart';
 import '../../../Widgets/common_button.dart';
 import '../../../Widgets/common_checkbox.dart';
 import '../../../Widgets/common_checkbox_with_textfieldview.dart';
-import '../../../Widgets/common_textfield.dart';
 
 import '../auth_controller/survey_controller.dart';
 
@@ -75,7 +73,7 @@ class SurveyScreen extends GetView<SurveyController> {
                               )
                             ],
                           ),
-                          Text(
+                          const Text(
                             "in your City.",
                             style: AppTextStyles.authTitle,
                           ),
@@ -117,10 +115,10 @@ class SurveyScreen extends GetView<SurveyController> {
                               )
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 30,
                           ),
-                          Spacer(),
+                          const Spacer(),
                           InnerShadowButton(
                             text: "Submit",
                             onPressed: () {

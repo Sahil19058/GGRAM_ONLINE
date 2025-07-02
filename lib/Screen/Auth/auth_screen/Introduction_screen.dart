@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ggram_online/Routes/route_name.dart';
@@ -7,7 +7,6 @@ import '../../../Theme/app_color.dart';
 import '../../../Theme/app_textstyle.dart';
 import '../../../Widgets/common_button.dart';
 import '../../../Widgets/common_textfield.dart';
-import '../auth_controller/login_controller.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 class IntroductionScreen extends GetView<IntroductionController> {
@@ -32,11 +31,12 @@ class IntroductionScreen extends GetView<IntroductionController> {
             backgroundColor: Colors.transparent,
             body: Container(
               decoration: BoxDecoration(
-                color: AppColor.backgroundContainer.withOpacity(0.8),
+                color: AppColor.backgroundContainer.withValues(alpha: 0.8),
                 borderRadius: BorderRadius.circular(40),
               ),
               margin: const EdgeInsets.only(
-                  top: 40, bottom: 20, left: 16, right: 16),
+                  top: 40, bottom: 20, left: 16, right: 16
+              ),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
               child: SingleChildScrollView(
                 child: Column(
@@ -51,7 +51,7 @@ class IntroductionScreen extends GetView<IntroductionController> {
                           const Spacer(),
                           GestureDetector(
                             onTap: () {
-                              // Handle skip logic here
+                              Get.toNamed(RouteName.surveyScreen);
                             },
                             child: const Text(
                               "Skip",
@@ -197,9 +197,10 @@ class IntroductionScreen extends GetView<IntroductionController> {
                                 decoration: const InputDecoration(
                                     border: InputBorder.none),
                                 icon: Container(
+                                  padding: const EdgeInsets.all(2),
                                   decoration: const BoxDecoration(
                                       shape: BoxShape.circle),
-                                  child: Image.asset("assets/image/Vector.png"),
+                                  child: Image.asset("assets/icons/Vector.png"),
                                 ),
                                 hint: const Text("Select",
                                     style: TextStyle(

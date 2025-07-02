@@ -1,5 +1,3 @@
-import 'package:country_code_picker/country_code_picker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
@@ -32,7 +30,7 @@ class OtpScreen extends GetView<OtpController> {
               const EdgeInsets.only(top: 40, bottom: 20, left: 16, right: 16),
           child: Container(
             decoration: BoxDecoration(
-              color: AppColor.backgroundContainer.withOpacity(0.8),
+              color: AppColor.backgroundContainer.withValues(alpha: 0.8),
               borderRadius: BorderRadius.circular(40),
             ),
             child: Padding(
@@ -117,7 +115,7 @@ class OtpScreen extends GetView<OtpController> {
                       )
                     ],
                   ),
-                  const Spacer(),
+                  const SizedBox(height: 56,),
                   InnerShadowButton(
                     text: "Submit",
                     onPressed: () {

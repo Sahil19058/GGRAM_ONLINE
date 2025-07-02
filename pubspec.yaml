@@ -44,6 +44,8 @@ dependencies:
   dotted_border: ^2.1.0
   image_picker: ^1.1.2
   flutter_keyboard_visibility: ^6.0.0
+  syncfusion_flutter_treemap: ^24.2.4
+  country_picker: ^2.0.27
 
 #  google_maps_flutter: ^2.10.1
 

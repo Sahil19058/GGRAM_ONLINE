@@ -18,6 +18,8 @@ class TextFieldView extends StatelessWidget {
   final FormFieldValidator<String>? validator;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
+  final int? maxLength;
+  final String? counterText;
 
   const TextFieldView({
     super.key,
@@ -34,6 +36,8 @@ class TextFieldView extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.validator,
+    this.maxLength,
+    this.counterText,
   });
 
   @override
@@ -64,6 +68,7 @@ class TextFieldView extends StatelessWidget {
             ),
           ),
           child: TextFormField(
+            maxLength: maxLength,
             controller: controller,
             onTap: onTap,
             obscureText: obscureText,
@@ -81,6 +86,7 @@ class TextFieldView extends StatelessWidget {
               color: AppColor.textSecondary,
             ),
             decoration: InputDecoration(
+              counterText: counterText ?? null,
               hintText: hintText.tr,
               prefixIcon: prefixIcon,
               suffixIcon: suffixIcon,
@@ -89,6 +95,8 @@ class TextFieldView extends StatelessWidget {
                 fontWeight: FontWeight.w500,
                 fontSize: 15,
                 color: AppColor.outlineBorder,
+                overflow: TextOverflow.ellipsis,
+
               ),
               filled: true,
               fillColor: AppColor.textFiledBackground,

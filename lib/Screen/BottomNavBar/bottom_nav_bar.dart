@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ggram_online/Theme/app_color.dart';
 import '../../Widgets/custom_drawer.dart';
-import '../home/home_module/home_screen.dart';
-import '../info/info_page_screen.dart';
 import 'bottom_nav_bar_controller.dart';
 
 class BottomNavBar extends GetView<BottomNavController> {

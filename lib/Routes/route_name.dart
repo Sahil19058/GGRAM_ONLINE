@@ -12,5 +12,10 @@ class RouteName {
   static const String uploadImageScreen = '/UploadImageScreen';
   static const String infoPageScreen = '/InfoPageScreen';
   static const String officialDetailScreen = '/OfficialDetailScreen';
+  static const String editProfileScreen = '/EditProfileScreen';
+  static const String faqScreen = '/FaqScreen';
+  static const String contactUsScreen = '/ContactUsScreen';
+  static const String profileDetailScreen = '/ProfileDetailScreen';
+  static const String issueDetailScreen = '/IssueDetailScreen';
 
 }

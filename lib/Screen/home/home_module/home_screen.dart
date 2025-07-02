@@ -6,7 +6,7 @@ import 'package:ggram_online/Screen/home/home_controller/home_controller.dart';
 import 'package:ggram_online/Theme/app_color.dart';
 import '../../../Routes/route_name.dart';
 import '../../../Theme/app_textstyle.dart';
-import '../../../Widgets/comoon_appbar.dart';
+import '../../../Widgets/common_appbar.dart';
 import '../../../Widgets/custom_drawer.dart';
 import '../../BottomNavBar/bottom_nav_bar_controller.dart';
 
@@ -17,60 +17,75 @@ class HomeScreen extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: CustomSideDrawer(
-        onLogout: () {
-          // Perform logout logic
-        },
-      ),
-      backgroundColor: AppColor.backgroundContainer,
-      appBar: CommonAppBar(
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: IconButton(
-              onPressed: () {
-                Get.find<BottomNavController>().openDrawer();
-              },
-              icon: SvgPicture.asset('assets/icons/menu.svg'),
-            ),
-          )
-        ],
-        title: 'Sector 64',
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 19),
-          child: Container(
-            decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [
-              BoxShadow(
-                offset: const Offset(0, -6),
-                blurRadius: 10,
-                spreadRadius: 0,
-                color: Colors.grey.shade300,
-                inset: true,
-                blurStyle: BlurStyle.inner,
-              ),
-            ]),
-            child: Center(
-                child: IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset("assets/icons/landmark.svg"),
-            )),
-          ),
-        ),
-      ),
-      body: Container(
+    return Container(
         decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/image/Splash.png'),
-            opacity: 0.2,
-            fit: BoxFit.fill,
+          color: AppColor.backgroundContainer,
+            image: DecorationImage(
+              image: AssetImage('assets/image/Splash.png'),
+              opacity: 0.2,
+              fit: BoxFit.fill,
+            ),
+          ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        drawer: CustomSideDrawer(
+          onLogout: () {
+            // Perform logout logic
+          },
+        ),
+        appBar: CommonAppBar(
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: IconButton(
+                onPressed: () {
+                  Get.find<BottomNavController>().openDrawer();
+                },
+                icon: SvgPicture.asset('assets/icons/menu.svg'),
+              ),
+            )
+          ],
+          title: 'Sector 64',
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 19),
+            child: Container(
+              decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [
+                BoxShadow(
+                  offset: const Offset(0, -6),
+                  blurRadius: 10,
+                  spreadRadius: 0,
+                  color: Colors.grey.shade300,
+                  inset: true,
+                  blurStyle: BlurStyle.inner,
+                ),
+              ]),
+              child: Center(
+                  child: IconButton(
+                onPressed: () {},
+                icon: SvgPicture.asset("assets/icons/landmark.svg"),
+              )),
+            ),
           ),
         ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [_buildBody()],
-          ),
+        // body: Container(
+        //   decoration: const BoxDecoration(
+        //     image: DecorationImage(
+        //       image: AssetImage('assets/image/Splash.png'),
+        //       opacity: 0.2,
+        //       fit: BoxFit.fill,
+        //     ),
+        //   ),
+        //   child: SingleChildScrollView(
+        //     child: Column(
+        //       children: [_buildBody()],
+        //     ),
+        //   ),
+        // ),
+        body: SingleChildScrollView(
+        child: Column(
+          children: [_buildBody()],
         ),
+      ),
       ),
     );
   }
@@ -111,7 +126,8 @@ Widget _buildBody() {
               _buildContainer("assets/icons/road.svg", "Report Road \nIssue",
                   () {
                 // Handle tap
-                Get.toNamed(RouteName.reportRoadScreen);
+                // Get.toNamed(RouteName.reportRoadScreen);
+                Get.toNamed(RouteName.uploadImageScreen);
               }),
               const SizedBox(width: 16),
               _buildContainer("assets/icons/road.svg", "Report Road \nIssue",
@@ -133,6 +149,7 @@ Widget _buildContainer(String iconPath, String label, VoidCallback onTap) {
   return GestureDetector(
     onTap: onTap,
     child: Container(
+      margin: const EdgeInsets.symmetric(vertical: 5),
       height: 148,
       width: 140,
       decoration: BoxDecoration(
@@ -141,10 +158,10 @@ Widget _buildContainer(String iconPath, String label, VoidCallback onTap) {
         boxShadow: [
           BoxShadow(
             offset: const Offset(0, 4),
-            blurRadius: 10,
+            blurRadius: 2,
             spreadRadius: 0,
             color: Colors.grey.shade300,
-          )
+          ),
         ],
       ),
       child: Padding(

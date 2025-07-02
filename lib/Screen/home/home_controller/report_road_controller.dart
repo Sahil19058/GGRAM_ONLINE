@@ -11,4 +11,15 @@ class ReportRoadController extends GetxController {
   void setImage(File file) {
     uploadedImage.value = file;
   }
+  // void didChangeAppLifecycleState(AppLifecycleState state) {
+  //   if (state == AppLifecycleState.resumed) {
+  //     // App came to foreground
+  //     print("App Resumed");
+  //   } else if (state == AppLifecycleState.paused) {
+  //     // App is in background
+  //     print("App Paused");
+  //   }
+  // }
+  // with WidgetsBindingObserver
 }
+

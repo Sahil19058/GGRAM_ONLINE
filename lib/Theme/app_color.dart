@@ -14,5 +14,13 @@ class AppColor {
   static const Color miniMalGrey = Color(0xff747380);
   static const Color dividerColor = Color(0xffF3F3F3);
   static const Color infoPageSubTitle = Color(0xff868686);
+  static const Color outlineMinimal = Color(0xffF6F6F6);
+  static const Color resolutionColor = Color(0xff81FFCD);
+  static const Color faqAnsColor = Color(0xff5B5B5B);
+  static const Color inProgressColor = Color(0xffFEF9C3);
+  static const Color resolvedColor = Color(0xffC3FECA);
+  static const Color inProgressTextColor = Color(0xff854D0F);
+  static const Color resolvedTextColor = Color(0xff0F8532);
+
 
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../Analytics/analytic_heatmap_screen.dart';
 import '../home/home_module/home_screen.dart';
 import '../info/info_page_screen.dart';
 
@@ -12,7 +13,7 @@ class BottomNavController extends GetxController {
   final List<Widget> pages = [
     HomeScreen(),
     InfoPageScreen(),
-    Center(child: Text("Analytics Page", style: TextStyle(fontSize: 22))),
+    AnalyticHeatmapScreen()
   ];
 
   final List<String> svgIcons = [
