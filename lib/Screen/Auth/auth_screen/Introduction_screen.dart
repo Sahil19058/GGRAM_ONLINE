@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ggram_online/Routes/route_name.dart';
 import 'package:ggram_online/Screen/Auth/auth_controller/introduction_controller.dart';
+import 'package:ggram_online/utils/form_validators.dart';
 import '../../../Theme/app_color.dart';
 import '../../../Theme/app_textstyle.dart';
 import '../../../Widgets/common_button.dart';
@@ -72,32 +73,42 @@ class IntroductionScreen extends GetView<IntroductionController> {
                       Center(
                         child: Stack(
                           children: [
-                            Container(
-                              height: 100,
-                              width: 100,
-                              decoration: BoxDecoration(
+                            Obx(() {
+                              return Container(
+                                height: 100,
+                                width: 100,
+                                decoration: BoxDecoration(
                                   color: AppColor.outlineBorder,
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
-                                    image: Image.asset('assets/image/user.png')
-                                        .image,
-                                  )),
-                            ),
+                                    // fit: BoxFit.fill,
+                                    image: controller.pickedImage.value != null
+                                        ? FileImage(controller.pickedImage.value!) as ImageProvider
+                                        : const AssetImage('assets/image/user.png'),
+                                  ),
+                                ),
+                              );
+                            }),
                             Positioned(
                               bottom: 0,
                               right: 0,
-                              child: Container(
-                                height: 32,
-                                width: 32,
-                                decoration: BoxDecoration(
+                              child: GestureDetector(
+                                onTap: () {
+                                  controller.pickImageFromGallery();
+                                },
+                                child: Container(
+                                  height: 32,
+                                  width: 32,
+                                  decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: AppColor.buttonColor,
                                     image: DecorationImage(
-                                        image: Image.asset(
-                                                "assets/image/camera.png")
-                                            .image)),
+                                      image: AssetImage("assets/image/camera.png"),
+                                    ),
+                                  ),
+                                ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -111,31 +122,14 @@ class IntroductionScreen extends GetView<IntroductionController> {
                               title: "Name",
                               controller: controller.name,
                               hintText: 'Please enter your name',
-                              validator: (value) {
-                                if (value == null || value.trim().isEmpty) {
-                                  return 'Name is required';
-                                } else if (!RegExp(r'^[a-zA-Z ]+$')
-                                    .hasMatch(value.trim())) {
-                                  return 'Name must contain only letters';
-                                }
-                                return null;
-                              },
+                              validator: FormValidators.validateName,
                             ),
                             const SizedBox(height: 10),
                             TextFieldView(
                               title: "Email ID",
                               controller: controller.email,
                               hintText: 'Please enter your email ID',
-                              validator: (value) {
-                                if (value == null || value.trim().isEmpty) {
-                                  return 'Email is required';
-                                } else if (!RegExp(
-                                        r'^[\w-\.]+@([\w-]+\.)+[\w]{2,4}$')
-                                    .hasMatch(value.trim())) {
-                                  return 'Enter a valid email address';
-                                }
-                                return null;
-                              },
+                              validator: FormValidators.validateEmail,
                             ),
                             const SizedBox(height: 10),
                             TextFieldView(
@@ -143,15 +137,7 @@ class IntroductionScreen extends GetView<IntroductionController> {
                               controller: controller.age,
                               hintText: 'Please enter your age',
                               keyBoardType: TextInputType.number,
-                              validator: (value) {
-                                if (value == null || value.trim().isEmpty) {
-                                  return 'Age is required';
-                                } else if (!RegExp(r'^[1-9][0-9]?$|^100$')
-                                    .hasMatch(value.trim())) {
-                                  return 'Age must be between 1 and 100';
-                                }
-                                return null;
-                              },
+                              validator:  FormValidators.validateAge,
                             ),
                             const SizedBox(height: 10),
                             TextFieldView(
@@ -159,15 +145,7 @@ class IntroductionScreen extends GetView<IntroductionController> {
                               controller: controller.homePin,
                               hintText: 'Please enter your home PIN',
                               keyBoardType: TextInputType.number,
-                              validator: (value) {
-                                if (value == null || value.trim().isEmpty) {
-                                  return 'Home PIN is required';
-                                } else if (!RegExp(r'^\d{6}$')
-                                    .hasMatch(value.trim())) {
-                                  return 'PIN must be exactly 6 digits';
-                                }
-                                return null;
-                              },
+                              validator:  FormValidators.validatePin
                             ),
                             const SizedBox(height: 10),
                             const Text(
@@ -207,12 +185,9 @@ class IntroductionScreen extends GetView<IntroductionController> {
                                         color: AppColor.textPrimary,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 15)),
-                                validator: (value) {
-                                  if (value == null || value.trim().isEmpty) {
-                                    return 'Gender is required';
-                                  }
-                                  return null;
-                                },
+                                validator:  FormValidators.validateGender,
+                                borderRadius: BorderRadius.circular(20),
+                                dropdownColor: AppColor.backgroundContainer,
                                 items: controller.genderOptions
                                     .map((String value) {
                                   return DropdownMenuItem<String>(

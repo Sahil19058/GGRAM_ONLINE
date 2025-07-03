@@ -1,10 +1,15 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:ggram_online/Screen/Analytics/analytics_controller/analytics_heatmap_controller.dart';
 import 'package:ggram_online/Theme/app_color.dart';
 import 'package:ggram_online/Theme/app_textstyle.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class HeatmapWidget extends StatelessWidget {
+class HeatmapWidget extends GetView<HeatmapController> {
   const HeatmapWidget({super.key});
 
   @override
@@ -48,8 +53,22 @@ class HeatmapWidget extends StatelessWidget {
             Container(
               height: 400,
               decoration: BoxDecoration(
-                color: AppColor.buttonColor,
-                borderRadius: BorderRadius.circular(32)
+                borderRadius: BorderRadius.circular(30),
+              ),
+              clipBehavior: Clip.antiAlias,
+              child: GoogleMap(
+                initialCameraPosition: CameraPosition(
+                  target: controller.currentLatLng.value,
+                  zoom: 17,
+                ),
+                myLocationButtonEnabled: false,
+                onMapCreated: controller.onMapCreated,
+                myLocationEnabled: true,
+                zoomControlsEnabled: false,
+                mapType: MapType.normal,
+                gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
+                  Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
+                },
               ),
             ),
             const SizedBox(

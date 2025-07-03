@@ -83,36 +83,36 @@ class SurveyScreen extends GetView<SurveyController> {
                             children: [
                               CommonCheckboxView(
                                 label: "Broken Roads",
-                                value: controller.brokenRoads, // RxBool from controller
-                                onChanged: (val) => controller.brokenRoads.value = val ?? false,
+                                value: controller.brokenRoads,
+                                onChanged: (_) => controller.toggleOption(controller.brokenRoads),
                               ),
                               CommonCheckboxView(
                                 label: "Water Logging",
-                                value: controller.waterLogging, // RxBool from controller
-                                onChanged: (val) => controller.waterLogging.value = val ?? false,
+                                value: controller.waterLogging,
+                                onChanged: (_) => controller.toggleOption(controller.waterLogging),
                               ),
                               CommonCheckboxView(
                                 label: "No/Broken Footpaths",
-                                value: controller.footpaths, // RxBool from controller
-                                onChanged: (val) => controller.footpaths.value = val ?? false,
+                                value: controller.footpaths,
+                                onChanged: (_) => controller.toggleOption(controller.footpaths),
                               ),
                               CommonCheckboxView(
                                 label: "Dust",
-                                value: controller.dust, // RxBool from controller
-                                onChanged: (val) => controller.dust.value = val ?? false,
+                                value: controller.dust,
+                                onChanged: (_) => controller.toggleOption(controller.dust),
                               ),
                               CommonCheckboxView(
                                 label: "Pollution",
-                                value: controller.pollution, // RxBool from controller
-                                onChanged: (val) => controller.pollution.value = val ?? false,
+                                value: controller.pollution,
+                                onChanged: (_) => controller.toggleOption(controller.pollution),
                               ),
                               CommonCheckboxWithTextFieldView(
                                 label: "Others",
                                 value: controller.others,
                                 controller: controller.otherController,
-                                onChanged: (val) => controller.others.value = val ?? false,
+                                onChanged: (_) => controller.toggleOption(controller.others),
                                 hintText: "Enter Details",
-                              )
+                              ),
                             ],
                           ),
                           const SizedBox(

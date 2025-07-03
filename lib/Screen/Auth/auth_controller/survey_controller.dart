@@ -22,7 +22,26 @@ class SurveyController extends GetxController {
 
   int get selectedCount => selectedOptions.where((e) => e.value).length;
 
-  bool validateSelection() => selectedCount <= 3;
+  // bool validateSelection() => selectedCount <= 3;
+
+  void toggleOption(RxBool option) {
+    if (option.value) {
+      // Already selected, so allow unchecking
+      option.value = false;
+    } else if (selectedCount < 3) {
+      // Less than 3 selected, allow checking
+      option.value = true;
+    } else {
+      // Do nothing or show a warning
+      Get.snackbar(
+        "Limit Reached",
+        "You can select up to 3 issues only.",
+        backgroundColor: Colors.redAccent.withOpacity(0.8),
+        colorText: Colors.white,
+      );
+    }
+  }
+
 
   @override
   void onClose() {

@@ -1,5 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:io';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class EditProfileController extends GetxController {
   final formKey = GlobalKey<FormState>();
@@ -18,43 +20,19 @@ class EditProfileController extends GetxController {
   RxString selectedGender = ''.obs;
   RxString selectedStatus = ''.obs;
 
-  bool validateForm() => formKey.currentState?.validate() ?? false;
+  Rx<File?> profileImage = Rx<File?>(null);
 
-  String? validateName(String? value) {
-    if (value == null || value.trim().isEmpty) return 'Name is required';
-    if (!RegExp(r'^[a-zA-Z ]+$').hasMatch(value)) return 'Only letters allowed';
-    return null;
-  }
+  Future<void> pickImageFromGallery() async {
+    final picker = ImagePicker();
+    final pickedFile =
+    await picker.pickImage(source: ImageSource.gallery, imageQuality: 75);
 
-  String? validateEmail(String? value) {
-    if (value == null || value.trim().isEmpty) return 'Email is required';
-    if (!RegExp(r'^[\\w-\\.]+@([\\w-]+\\.)+[\\w]{2,4}\$').hasMatch(value)) {
-      return 'Enter a valid email';
+    if (pickedFile != null) {
+      profileImage.value = File(pickedFile.path);
     }
-    return null;
   }
 
-  String? validateAge(String? value) {
-    if (value == null || value.trim().isEmpty) return 'Age is required';
-    if (!RegExp(r'^[1-9][0-9]?$|^100$').hasMatch(value)) return 'Age must be 1-100';
-    return null;
-  }
-
-  String? validatePin(String? value) {
-    if (value == null || value.trim().isEmpty) return 'PIN is required';
-    if (!RegExp(r'^\\d{6}\$').hasMatch(value)) return 'PIN must be 6 digits';
-    return null;
-  }
-
-  String? validateGender(String? value) {
-    if (value == null || value.trim().isEmpty) return 'Gender is required';
-    return null;
-  }
-
-  String? validateStatus(String? value) {
-    if (value == null || value.trim().isEmpty) return 'Residential status is required';
-    return null;
-  }
+  bool validateForm() => formKey.currentState?.validate() ?? false;
 
   @override
   void onClose() {

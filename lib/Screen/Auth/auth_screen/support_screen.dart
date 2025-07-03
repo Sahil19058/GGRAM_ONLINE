@@ -84,52 +84,42 @@ class SupportScreen extends GetView<SupportController> {
                       children: [
                         CommonCheckboxView(
                           label: "Front End / Back End Design",
-                          value: controller
-                              .frontendBackEndDesign, // RxBool from controller
-                          onChanged: (val) => controller
-                              .frontendBackEndDesign.value = val ?? false,
+                          value: controller.frontendBackEndDesign,
+                          onChanged: (_) => controller.toggleOption(controller.frontendBackEndDesign),
                         ),
                         CommonCheckboxView(
                           label: "Research",
-                          value: controller.research, // RxBool from controller
-                          onChanged: (val) =>
-                              controller.research.value = val ?? false,
+                          value: controller.research,
+                          onChanged: (_) => controller.toggleOption(controller.research),
                         ),
                         CommonCheckboxView(
                           label: "On-Ground Volunteering",
-                          value: controller
-                              .onGroundVolunteering, // RxBool from controller
-                          onChanged: (val) => controller
-                              .onGroundVolunteering.value = val ?? false,
+                          value: controller.onGroundVolunteering,
+                          onChanged: (_) => controller.toggleOption(controller.onGroundVolunteering),
                         ),
                         CommonCheckboxView(
                           label: "Marketing",
-                          value: controller.marketing, // RxBool from controller
-                          onChanged: (val) =>
-                              controller.marketing.value = val ?? false,
+                          value: controller.marketing,
+                          onChanged: (_) => controller.toggleOption(controller.marketing),
                         ),
                         CommonCheckboxView(
                           label: "Content Creation",
-                          value: controller
-                              .contentCreation, // RxBool from controller
-                          onChanged: (val) =>
-                              controller.contentCreation.value = val ?? false,
+                          value: controller.contentCreation,
+                          onChanged: (_) => controller.toggleOption(controller.contentCreation),
                         ),
                         CommonCheckboxView(
                           label: "Fundraising / Sponsorship",
-                          value: controller
-                              .fundraisingSponsorship, // RxBool from controller
-                          onChanged: (val) =>
-                              controller.contentCreation.value = val ?? false,
+                          value: controller.fundraisingSponsorship,
+                          onChanged: (_) => controller.toggleOption(controller.fundraisingSponsorship),
                         ),
                         CommonCheckboxWithTextFieldView(
                           label: "Others",
                           value: controller.others,
                           controller: controller.otherController,
-                          onChanged: (val) =>
-                              controller.others.value = val ?? false,
+                          onChanged: (_) => controller.toggleOption(controller.others),
                           hintText: "Enter Details",
-                        )
+                        ),
+
                       ],
                     ),
                     const SizedBox(

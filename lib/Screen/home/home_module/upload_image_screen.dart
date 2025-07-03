@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:ggram_online/Widgets/common_appbar.dart';
-
 import '../../../Routes/route_name.dart';
 import '../../../Theme/app_color.dart';
 import '../../../Theme/app_textstyle.dart';
@@ -14,8 +13,6 @@ class UploadImageScreen extends GetView<UploadImageController> {
 
   @override
   Widget build(BuildContext context) {
-    final UploadImageController controller = Get.put(UploadImageController());
-
     return Container(
       width: double.infinity,
       height: double.infinity,
@@ -95,8 +92,7 @@ class UploadImageScreen extends GetView<UploadImageController> {
                     color: Colors.grey.shade300,
                     offset: const Offset(0, 3),
                     blurRadius: 10,
-                    spreadRadius: 0
-                )
+                    spreadRadius: 0)
               ],
             ),
             child: controller.pickedImage.value == null

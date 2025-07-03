@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ggram_online/Screen/profile/profile_controller/edit_profile_controller.dart';
 import 'package:ggram_online/Widgets/common_appbar.dart';
-
 import '../../Theme/app_color.dart';
 import '../../Theme/app_textstyle.dart';
 import '../../Widgets/common_button.dart';
 import '../../Widgets/common_textfield.dart';
+import '../../utils/form_validators.dart';
 
 class EditProfileScreen extends GetView<EditProfileController> {
   const EditProfileScreen({super.key});
@@ -33,13 +33,10 @@ class EditProfileScreen extends GetView<EditProfileController> {
             padding: const EdgeInsets.all(16.0),
             child: SingleChildScrollView(
               child: Column(
-                children: [
-                  _buildBody()
-                ],
+                children: [_buildBody()],
               ),
             ),
-          )
-      ),
+          )),
     );
   }
 
@@ -51,63 +48,71 @@ class EditProfileScreen extends GetView<EditProfileController> {
         children: [
           const SizedBox(height: 16),
           Center(
-            child: Stack(
+            child: Obx(() => Stack(
               children: [
                 Container(
                   height: 100,
                   width: 100,
                   decoration: BoxDecoration(
-                      color: AppColor.outlineBorder,
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                        image: Image.asset('assets/image/user.png').image,
-                      )),
+                    color: AppColor.outlineBorder,
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      // fit: BoxFit.cover,
+                      image: controller.profileImage.value != null
+                          ? FileImage(controller.profileImage.value!)
+                          : const AssetImage('assets/image/user.png') as ImageProvider,
+                    ),
+                  ),
                 ),
                 Positioned(
                   bottom: 0,
                   right: 0,
-                  child: Container(
-                    height: 32,
-                    width: 32,
-                    decoration: BoxDecoration(
+                  child: GestureDetector(
+                    onTap: controller.pickImageFromGallery,
+                    child: Container(
+                      height: 32,
+                      width: 32,
+                      decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         color: AppColor.buttonColor,
                         image: DecorationImage(
-                            image: Image.asset("assets/image/camera.png").image)),
+                          image: AssetImage("assets/image/camera.png"),
+                        ),
+                      ),
+                    ),
                   ),
                 )
               ],
-            ),
+            )),
           ),
           const SizedBox(height: 25),
           TextFieldView(
             title: "Name",
             controller: controller.nameController,
             hintText: 'Please enter your name',
-            validator: (value) => controller.validateName(value),
+            validator: FormValidators.validateName,
           ),
           const SizedBox(height: 10),
           TextFieldView(
             title: "Email ID",
             controller: controller.emailController,
             hintText: 'Please enter your email ID',
-            validator: (value) => controller.validateEmail(value),
+            validator: FormValidators.validateEmail,
           ),
           const SizedBox(height: 10),
           TextFieldView(
-            title: "Age",
-            controller: controller.ageController,
-            hintText: 'Please enter your age',
-            keyBoardType: TextInputType.number,
-            validator: (value) => controller.validateAge(value),
-          ),
+              title: "Age",
+              controller: controller.ageController,
+              hintText: 'Please enter your age',
+              keyBoardType: TextInputType.number,
+              validator: FormValidators.validateAge),
           const SizedBox(height: 10),
           TextFieldView(
             title: "Home PIN",
             controller: controller.homePinController,
             hintText: 'Please enter your home PIN',
             keyBoardType: TextInputType.number,
-            validator: (value) => controller.validatePin(value),
+            validator: FormValidators.validatePin,
           ),
           const SizedBox(height: 10),
           const Text("Gender", style: AppTextStyles.reportForm),
@@ -120,22 +125,33 @@ class EditProfileScreen extends GetView<EditProfileController> {
               border: Border.all(color: Colors.grey.shade400),
             ),
             child: DropdownButtonFormField<String>(
-              value: controller.selectedGender.value.isNotEmpty ? controller.selectedGender.value : null,
+              value: controller.selectedGender.value.isNotEmpty
+                  ? controller.selectedGender.value
+                  : null,
               decoration: const InputDecoration(border: InputBorder.none),
+              borderRadius: BorderRadius.circular(20),
+              dropdownColor: AppColor.backgroundContainer,
               icon: Padding(
                 padding: const EdgeInsets.all(2),
                 child: Image.asset("assets/icons/Vector.png"),
               ),
-              hint: const Text("Select", style: TextStyle(color: AppColor.textPrimary, fontWeight: FontWeight.w500, fontSize: 15)),
-              validator: (value) => controller.validateGender(value),
+              hint: const Text("Select",
+                  style: TextStyle(
+                      color: AppColor.textPrimary,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 15)),
+              validator: FormValidators.validateGender,
               items: controller.genderOptions.map((String value) {
-                return DropdownMenuItem<String>(value: value, child: Text(value));
+                return DropdownMenuItem<String>(
+                    value: value, child: Text(value));
               }).toList(),
-              onChanged: (newValue) => controller.selectedGender.value = newValue ?? '',
+              onChanged: (newValue) =>
+                  controller.selectedGender.value = newValue ?? '',
             ),
           ),
           const SizedBox(height: 24),
-          const Text("Share more details to Help us improve.", style: AppTextStyles.splashSubTitle),
+          const Text("Share more details to Help us improve.",
+              style: AppTextStyles.splashSubTitle),
           const SizedBox(height: 24),
           const Text("Residential Status", style: AppTextStyles.reportForm),
           const SizedBox(height: 8),
@@ -147,18 +163,28 @@ class EditProfileScreen extends GetView<EditProfileController> {
               border: Border.all(color: Colors.grey.shade400),
             ),
             child: DropdownButtonFormField<String>(
-              value: controller.selectedStatus.value.isNotEmpty ? controller.selectedStatus.value : null,
+              value: controller.selectedStatus.value.isNotEmpty
+                  ? controller.selectedStatus.value
+                  : null,
               decoration: const InputDecoration(border: InputBorder.none),
+              borderRadius: BorderRadius.circular(20),
+              dropdownColor: AppColor.backgroundContainer,
               icon: Padding(
                 padding: const EdgeInsets.all(2),
                 child: Image.asset("assets/icons/Vector.png"),
               ),
-              hint: const Text("Select", style: TextStyle(color: AppColor.textPrimary, fontWeight: FontWeight.w500, fontSize: 15)),
-              validator: (value) => controller.validateStatus(value),
+              hint: const Text("Select",
+                  style: TextStyle(
+                      color: AppColor.textPrimary,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 15)),
+              validator: FormValidators.validateStatus,
               items: controller.statusOptions.map((String value) {
-                return DropdownMenuItem<String>(value: value, child: Text(value));
+                return DropdownMenuItem<String>(
+                    value: value, child: Text(value));
               }).toList(),
-              onChanged: (newValue) => controller.selectedStatus.value = newValue ?? '',
+              onChanged: (newValue) =>
+                  controller.selectedStatus.value = newValue ?? '',
             ),
           ),
           const SizedBox(height: 20),

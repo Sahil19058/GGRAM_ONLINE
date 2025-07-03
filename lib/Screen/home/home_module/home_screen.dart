@@ -1,9 +1,14 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
 import 'package:ggram_online/Screen/home/home_controller/home_controller.dart';
 import 'package:ggram_online/Theme/app_color.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../../Routes/route_name.dart';
 import '../../../Theme/app_textstyle.dart';
 import '../../../Widgets/common_appbar.dart';
@@ -18,14 +23,14 @@ class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: const BoxDecoration(
-          color: AppColor.backgroundContainer,
-            image: DecorationImage(
-              image: AssetImage('assets/image/Splash.png'),
-              opacity: 0.2,
-              fit: BoxFit.fill,
-            ),
-          ),
+      decoration: const BoxDecoration(
+        color: AppColor.backgroundContainer,
+        image: DecorationImage(
+          image: AssetImage('assets/image/Splash.png'),
+          opacity: 0.2,
+          fit: BoxFit.fill,
+        ),
+      ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         drawer: CustomSideDrawer(
@@ -33,40 +38,50 @@ class HomeScreen extends GetView<HomeController> {
             // Perform logout logic
           },
         ),
-        appBar: CommonAppBar(
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: IconButton(
-                onPressed: () {
-                  Get.find<BottomNavController>().openDrawer();
-                },
-                icon: SvgPicture.asset('assets/icons/menu.svg'),
-              ),
-            )
-          ],
-          title: 'Sector 64',
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 19),
-            child: Container(
-              decoration: BoxDecoration(shape: BoxShape.circle, boxShadow: [
-                BoxShadow(
-                  offset: const Offset(0, -6),
-                  blurRadius: 10,
-                  spreadRadius: 0,
-                  color: Colors.grey.shade300,
-                  inset: true,
-                  blurStyle: BlurStyle.inner,
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(kToolbarHeight),
+          child: Obx(() => CommonAppBar(
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: IconButton(
+                      onPressed: () {
+                        Get.find<BottomNavController>().openDrawer();
+                      },
+                      icon: SvgPicture.asset('assets/icons/menu.svg'),
+                    ),
+                  )
+                ],
+                title: controller.currentSector.value.isEmpty
+                    ? "Locating..."
+                    : controller.currentSector.value,
+                leading: Padding(
+                  padding: const EdgeInsets.only(left: 19),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          offset: const Offset(0, -6),
+                          blurRadius: 10,
+                          spreadRadius: 0,
+                          color: Colors.grey.shade300,
+                          inset: true,
+                          blurStyle: BlurStyle.inner,
+                        ),
+                      ],
+                    ),
+                    child: Center(
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: SvgPicture.asset("assets/icons/landmark.svg"),
+                      ),
+                    ),
+                  ),
                 ),
-              ]),
-              child: Center(
-                  child: IconButton(
-                onPressed: () {},
-                icon: SvgPicture.asset("assets/icons/landmark.svg"),
               )),
-            ),
-          ),
         ),
+
         // body: Container(
         //   decoration: const BoxDecoration(
         //     image: DecorationImage(
@@ -82,67 +97,110 @@ class HomeScreen extends GetView<HomeController> {
         //   ),
         // ),
         body: SingleChildScrollView(
-        child: Column(
-          children: [_buildBody()],
+          child: Column(
+            children: [_buildBody()],
+          ),
         ),
-      ),
       ),
     );
   }
-}
 
-Widget _buildBody() {
-  return Padding(
-    padding: const EdgeInsets.all(16),
-    child: Column(
-      children: [
-        Container(
-          height: 414,
-          decoration: BoxDecoration(
-              color: AppColor.buttonColor,
-              borderRadius: BorderRadius.circular(16)),
-          // child: GoogleMap(
-          //   initialCameraPosition: CameraPosition(
-          //     target: LatLng(37.7749, -122.4194), // Example: San Francisco
-          //     zoom: 12,
+  Widget _buildBody() {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        children: [
+          Obx(() => Container(
+              height: 414,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              clipBehavior: Clip.antiAlias,
+              child: GoogleMap(
+                initialCameraPosition: CameraPosition(
+                  target: controller.currentLatLng.value,
+                  zoom: 17,
+                ),
+                myLocationButtonEnabled: false,
+                onMapCreated: controller.onMapCreated,
+                myLocationEnabled: true,
+                zoomControlsEnabled: false,
+                mapType: MapType.normal,
+                gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
+                  Factory<OneSequenceGestureRecognizer>(
+                      () => EagerGestureRecognizer()),
+                },
+              ))),
+
+          /// DELHI EXAMPLE
+          // Container(
+          //   height: 414,
+          //   decoration: BoxDecoration(
+          //     color: AppColor.buttonColor,
+          //     borderRadius: BorderRadius.circular(16),
           //   ),
-          //   onMapCreated: (GoogleMapController controller) {
-          //     // You can keep the controller if needed
-          //   },
-          //   myLocationEnabled: true,
-          //   zoomControlsEnabled: false,
+          //   clipBehavior: Clip.antiAlias,
+          //   child: GoogleMap(
+          //     initialCameraPosition: const CameraPosition(
+          //       target: LatLng(28.7215, 77.1110), // Example location: Rohini
+          //       zoom: 17,
+          //     ),
+          //     myLocationButtonEnabled: false,
+          //     myLocationEnabled: true,
+          //     zoomControlsEnabled: false,
+          //     mapType: MapType.normal,
+          //     gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
+          //       Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
+          //     },
+          //     onMapCreated: (GoogleMapController controller) async {
+          //       try {
+          //         List<Placemark> placemarks = await placemarkFromCoordinates(
+          //           28.7215,
+          //           77.1110,
+          //         );
+          //
+          //         if (placemarks.isNotEmpty) {
+          //           Placemark place = placemarks.first;
+          //           String sector = place.subLocality ?? place.locality ?? place.name ?? "Unknown";
+          //           print("📍 Sector/Locality: $sector");
+          //         }
+          //       } catch (e) {
+          //         print("❌ Error while fetching location: $e");
+          //       }
+          //     },
+          //   ),
           // ),
-        ),
-        const SizedBox(height: 16),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              _buildContainer("assets/icons/trash.svg", "Report Trash\nIssue",
-                  () {
-                // Handle tap
-              }),
-              const SizedBox(width: 16),
-              _buildContainer("assets/icons/road.svg", "Report Road \nIssue",
-                  () {
-                // Handle tap
-                // Get.toNamed(RouteName.reportRoadScreen);
-                Get.toNamed(RouteName.uploadImageScreen);
-              }),
-              const SizedBox(width: 16),
-              _buildContainer("assets/icons/road.svg", "Report Road \nIssue",
-                  () {
-                // Handle tap
-              }),
-            ],
+          const SizedBox(height: 16),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                _buildContainer("assets/icons/trash.svg", "Report Trash\nIssue",
+                    () {
+                  // Handle tap
+                }),
+                const SizedBox(width: 16),
+                _buildContainer("assets/icons/road.svg", "Report Road \nIssue",
+                    () {
+                  // Handle tap
+                  // Get.toNamed(RouteName.reportRoadScreen);
+                  Get.toNamed(RouteName.uploadImageScreen);
+                }),
+                const SizedBox(width: 16),
+                _buildContainer("assets/icons/road.svg", "Report Road \nIssue",
+                    () {
+                  // Handle tap
+                }),
+              ],
+            ),
           ),
-        ),
-        const SizedBox(
-          height: 100,
-        )
-      ],
-    ),
-  );
+          const SizedBox(
+            height: 100,
+          )
+        ],
+      ),
+    );
+  }
 }
 
 Widget _buildContainer(String iconPath, String label, VoidCallback onTap) {
