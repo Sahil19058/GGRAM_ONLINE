@@ -84,7 +84,6 @@ class AileGuruGramWidget extends GetView<AlieGuruGramController> {
                   levels: [
                     TreemapLevel(
                       groupMapper: (index) => controller.items[index].title,
-
                       labelBuilder: (context, tile) => Center(
                         child: Text(
                           tile.group,

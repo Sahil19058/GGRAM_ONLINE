@@ -84,11 +84,12 @@ class OfficialDetailScreen extends GetView<OfficialDetailController> {
                     ],
                   ),
                   child: ClipRRect(
-                      borderRadius: BorderRadius.circular(100),
-                      child: Image.asset(
-                        "assets/image/dummy.png",
-                        fit: BoxFit.contain,
-                      )),
+                    borderRadius: BorderRadius.circular(100),
+                    child: Image.asset(
+                      "assets/image/dummy.png",
+                      fit: BoxFit.contain,
+                    )
+                  )
                 ),
                 const SizedBox(
                   height: 16,
@@ -299,5 +300,4 @@ class OfficialDetailScreen extends GetView<OfficialDetailController> {
       ),
     );
   }
-
 }

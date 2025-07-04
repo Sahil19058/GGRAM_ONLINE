@@ -71,37 +71,37 @@ class OtpScreen extends GetView<OtpController> {
               ),
               const SizedBox(height: 8),
               Pinput(
-                  length: 6,
-                  defaultPinTheme: PinTheme(
-                    width: 54,
-                    height: 48,
-                    textStyle: const TextStyle(
-                      fontSize: 20,
-                      color: AppColor.textSecondary,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    decoration: BoxDecoration(
-                      color: AppColor.textFiledBackground,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: AppColor.outlineBorder),
-                    ),
+                length: 6,
+                defaultPinTheme: PinTheme(
+                  width: 54,
+                  height: 48,
+                  textStyle: const TextStyle(
+                    fontSize: 20,
+                    color: AppColor.textSecondary,
+                    fontWeight: FontWeight.w600,
                   ),
-                  focusedPinTheme: PinTheme(
-                    width: 54,
-                    height: 48,
-                    textStyle: const TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    decoration: BoxDecoration(
-                      color: AppColor.textFiledBackground,
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: AppColor.outlineBorder),
-                    ),
+                  decoration: BoxDecoration(
+                    color: AppColor.textFiledBackground,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: AppColor.outlineBorder),
                   ),
-                  showCursor: true,
-                  onCompleted: (pin) {}),
+                ),
+                focusedPinTheme: PinTheme(
+                  width: 54,
+                  height: 48,
+                  textStyle: const TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppColor.textFiledBackground,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: AppColor.outlineBorder),
+                  ),
+                ),
+                showCursor: true,
+                onCompleted: (pin) {}),
               const SizedBox(
                 height: 10,
               ),
@@ -136,8 +136,8 @@ class OtpScreen extends GetView<OtpController> {
               ),
               SizedBox(
                 height: isKeyboardVisible
-                    ? MediaQuery.of(context).viewInsets.bottom
-                    : 0,
+                  ? MediaQuery.of(context).viewInsets.bottom
+                  : 0,
               ),
             ],
           ),

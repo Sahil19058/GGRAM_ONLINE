@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart';
@@ -44,10 +43,10 @@ class UploadImageScreen extends GetView<UploadImageController> {
                 Expanded(
                   child: GestureDetector(
                     onTap: controller.isLocked.value
-                        ? (){
-                          print("pickedImage value: ${controller.pickedImage.value}");
-                          Get.toNamed(RouteName.reportRoadScreen,arguments: controller.pickedImage.value);}
-                        : () async => await controller.pickFromCamera(),
+                      ? (){
+                        print("pickedImage value: ${controller.pickedImage.value}");
+                        Get.toNamed(RouteName.reportRoadScreen,arguments: controller.pickedImage.value);}
+                      : () async => await controller.pickFromCamera(),
                     child: Container(
                       height: 80,
                       width: 80,
@@ -56,33 +55,29 @@ class UploadImageScreen extends GetView<UploadImageController> {
                         shape: BoxShape.circle,
                       ),
                       child: Center(
-                        child: Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: controller.isLocked.value
-                                  ? AppColor.buttonColor
-                                  : AppColor.backgroundContainer,
-                              boxShadow: [
-                                controller.isLocked.value
-                                    ? BoxShadow()
-                                    : BoxShadow(
-                                        offset: const Offset(0, -8.16),
-                                        blurRadius: 10,
-                                        spreadRadius: 0,
-                                        color: Colors.grey.shade300,
-                                        inset: true,
-                                        blurStyle: BlurStyle.inner,
-                                      ),
-                              ],
+                        child: Container(height: 50, width: 50, decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: controller.isLocked.value
+                              ? AppColor.buttonColor
+                              : AppColor.backgroundContainer,
+                          boxShadow: [
+                            controller.isLocked.value
+                              ? BoxShadow()
+                              : BoxShadow(
+                              offset: const Offset(0, -8.16),
+                              blurRadius: 10,
+                              spreadRadius: 0,
+                              color: Colors.grey.shade300,
+                              inset: true,
+                              blurStyle: BlurStyle.inner,
                             ),
-                            child: Center(
-                              child: controller.isLocked.value
-                                  ? SvgPicture.asset(
-                                      "assets/icons/check-circle.svg")
-                                  : null,
-                            )),
+                          ],
+                        ), child: Center(
+                          child: controller.isLocked.value
+                            ? SvgPicture.asset(
+                            "assets/icons/check-circle.svg")
+                            : null,
+                        )),
                       ),
                     ),
                   ),

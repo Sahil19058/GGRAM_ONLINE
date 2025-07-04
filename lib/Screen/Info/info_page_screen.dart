@@ -317,19 +317,21 @@ class _InfoCard extends StatelessWidget {
             child: Text(
               count,
               style: const TextStyle(
-                  color: AppColor.buttonColor,
-                  fontSize: 48,
-                  fontWeight: FontWeight.w700,
-                  fontFamily: 'Inter'),
+                color: AppColor.buttonColor,
+                fontSize: 48,
+                fontWeight: FontWeight.w700,
+                fontFamily: 'Inter'
+              ),
             ),
           ),
           Text(
             label,
             style: const TextStyle(
-                color: AppColor.textSecondary,
-                fontSize: 18,
-                fontWeight: FontWeight.w500,
-                fontFamily: 'Inter'),
+              color: AppColor.textSecondary,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+              fontFamily: 'Inter'
+            ),
           ),
         ],
       ),

@@ -24,18 +24,19 @@ class WardIsDoingWidget extends GetView<WardDoingController> {
               height: 55,
               width: double.infinity,
               decoration: BoxDecoration(
-                  color: AppColor.backgroundContainer,
-                  borderRadius: BorderRadius.circular(40),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: const Offset(0, -4),
-                      blurRadius: 10,
-                      spreadRadius: 0,
-                      color: Colors.grey.shade300,
-                      inset: true,
-                      blurStyle: BlurStyle.inner,
-                    ),
-                  ]),
+                color: AppColor.backgroundContainer,
+                borderRadius: BorderRadius.circular(40),
+                boxShadow: [
+                  BoxShadow(
+                    offset: const Offset(0, -4),
+                    blurRadius: 10,
+                    spreadRadius: 0,
+                    color: Colors.grey.shade300,
+                    inset: true,
+                    blurStyle: BlurStyle.inner,
+                  ),
+                ]
+              ),
               child: Row(
                 children: [
                   SvgPicture.asset(
@@ -170,8 +171,8 @@ class WardIsDoingWidget extends GetView<WardDoingController> {
                       decoration: const BoxDecoration(
                         color: AppColor.resolutionColor,
                         borderRadius: BorderRadius.horizontal(
-                            left: Radius.circular(20),
-                            right: Radius.circular(35)),
+                          left: Radius.circular(20),
+                          right: Radius.circular(35)),
                       ),
                     ),
                   ),

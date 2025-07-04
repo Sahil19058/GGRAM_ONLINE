@@ -24,19 +24,20 @@ class EditProfileScreen extends GetView<EditProfileController> {
         ),
       ),
       child: Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: const CommonAppBar(
-            title: "Edit Profile",
-            centerTitle: true,
-          ),
-          body: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [_buildBody()],
-              ),
+        backgroundColor: Colors.transparent,
+        appBar: const CommonAppBar(
+          title: "Edit Profile",
+          centerTitle: true,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [_buildBody()],
             ),
-          )),
+          ),
+        )
+      ),
     );
   }
 
@@ -136,10 +137,12 @@ class EditProfileScreen extends GetView<EditProfileController> {
                 child: Image.asset("assets/icons/Vector.png"),
               ),
               hint: const Text("Select",
-                  style: TextStyle(
-                      color: AppColor.textPrimary,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 15)),
+                style: TextStyle(
+                  color: AppColor.textPrimary,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15
+                )
+              ),
               validator: FormValidators.validateGender,
               items: controller.genderOptions.map((String value) {
                 return DropdownMenuItem<String>(
@@ -174,10 +177,12 @@ class EditProfileScreen extends GetView<EditProfileController> {
                 child: Image.asset("assets/icons/Vector.png"),
               ),
               hint: const Text("Select",
-                  style: TextStyle(
-                      color: AppColor.textPrimary,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 15)),
+                style: TextStyle(
+                  color: AppColor.textPrimary,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15
+                )
+              ),
               validator: FormValidators.validateStatus,
               items: controller.statusOptions.map((String value) {
                 return DropdownMenuItem<String>(

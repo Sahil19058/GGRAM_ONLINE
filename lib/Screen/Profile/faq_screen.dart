@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:ggram_online/Screen/Profile/profile_controller/faq_controller.dart';
 
 import '../../Theme/app_color.dart';
 import '../../Theme/app_textstyle.dart';
 import '../../Widgets/common_appbar.dart';
 
-class FaqScreen extends StatelessWidget {
+class FaqScreen extends GetView<FaqController> {
   const FaqScreen({super.key});
 
   @override
@@ -21,11 +23,11 @@ class FaqScreen extends StatelessWidget {
         ),
       ),
       child: Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: const CommonAppBar(
-            title: "Frequently Asked Questions",
-            centerTitle: true,
-          ),
+        backgroundColor: Colors.transparent,
+        appBar: const CommonAppBar(
+          title: "Frequently Asked Questions",
+          centerTitle: true,
+        ),
         body: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
@@ -41,21 +43,11 @@ class FaqScreen extends StatelessWidget {
   Widget _buildBody() {
     List<bool> isExpandedList = List.generate(2, (_) => false); // track expansion
 
-    List<String> questions = [
-      "How do issues get reported to the authorities?",
-      "If I report an issue, does my name go to the authorities?",
-    ];
-
-    List<String> answers = [
-      "Issues are reported via the app and forwarded to the relevant authorities automatically.",
-      "Your name is not shared by default. If you opt-in, it will be shared for follow-up.",
-    ];
-
     return StatefulBuilder(builder: (context, setState) {
       return ListView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: questions.length,
+        itemCount: controller.questions.length,
         itemBuilder: (context, index) {
           return Container(
             margin: const EdgeInsets.symmetric(vertical: 6),
@@ -81,7 +73,7 @@ class FaqScreen extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          questions[index],
+                          controller.questions[index],
                           style: AppTextStyles.reportForm,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
@@ -108,7 +100,7 @@ class FaqScreen extends StatelessWidget {
                     const Divider(color: AppColor.dividerColor),
                     const SizedBox(height: 12),
                     Text(
-                      "Ans: ${answers[index]}",
+                      "Ans: ${controller.answers[index]}",
                       style: AppTextStyles.faqAns
                     ),
                   ]
@@ -120,5 +112,4 @@ class FaqScreen extends StatelessWidget {
       );
     });
   }
-
 }

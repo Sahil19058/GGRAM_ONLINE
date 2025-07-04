@@ -33,28 +33,28 @@ class BottomNavBar extends GetView<BottomNavController> {
             ],
           ),
           child: Obx(() => Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: List.generate(controller.svgIcons.length, (index) {
-                  final isSelected = controller.selectedIndex.value == index;
-                  return IconButton(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    icon: SvgPicture.asset(
-                      controller.svgIcons[index],
-                      colorFilter: ColorFilter.mode(
-                        isSelected
-                            ? AppColor.buttonColor
-                            : AppColor.unSelectButton,
-                        BlendMode.srcIn,
-                      ),
-                      width: 28,
-                      height: 28,
-                    ),
-                    onPressed: () {
-                      controller.changeIndex(index);
-                    },
-                  );
-                }),
-              )),
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: List.generate(controller.svgIcons.length, (index) {
+              final isSelected = controller.selectedIndex.value == index;
+              return IconButton(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                icon: SvgPicture.asset(
+                  controller.svgIcons[index],
+                  colorFilter: ColorFilter.mode(
+                    isSelected
+                        ? AppColor.buttonColor
+                        : AppColor.unSelectButton,
+                    BlendMode.srcIn,
+                  ),
+                  width: 28,
+                  height: 28,
+                ),
+                onPressed: () {
+                  controller.changeIndex(index);
+                },
+              );
+            }),
+          )),
         ),
       ),
     );

@@ -180,26 +180,26 @@ class ProfileDetailScreen extends GetView<ProfileDetailController> {
           ),
           const Divider(thickness: 1, height: 20),
           ...controller.issues.map((item) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(item["issue"]!,
-                          style: AppTextStyles.loginSubTitle),
-                    ),
-                    Expanded(
-                      child: Text(item["date"]!,
-                          style: AppTextStyles.loginSubTitle),
-                    ),
-                    Expanded(
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: _buildStatusChip(item["status"]!),
-                      ),
-                    ),
-                  ],
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(item["issue"]!,
+                      style: AppTextStyles.loginSubTitle),
                 ),
-              )),
+                Expanded(
+                  child: Text(item["date"]!,
+                      style: AppTextStyles.loginSubTitle),
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: _buildStatusChip(item["status"]!),
+                  ),
+                ),
+              ],
+            ),
+          )),
         ],
       ),
     );

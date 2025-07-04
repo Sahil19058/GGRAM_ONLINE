@@ -20,15 +20,19 @@ class LoginScreen extends GetView<LoginController> {
         height: double.infinity,
         width: double.infinity,
         decoration: const BoxDecoration(
-            color: AppColor.backgroundContainer,
-            image: DecorationImage(
-              fit: BoxFit.fill,
-              image: AssetImage("assets/image/Splash.png"),
-            )),
+          color: AppColor.backgroundContainer,
+          image: DecorationImage(
+            fit: BoxFit.fill,
+            image: AssetImage("assets/image/Splash.png"),
+          )
+        ),
         child: Scaffold(
-            resizeToAvoidBottomInset: false,
-            backgroundColor: Colors.transparent,
-            body: SingleChildScrollView(child: _buildBody(context,isKeyboardVisible))),
+          resizeToAvoidBottomInset: false,
+          backgroundColor: Colors.transparent,
+          body: SingleChildScrollView(
+            child: _buildBody(context,isKeyboardVisible)
+          )
+        ),
       );
     });
   }
@@ -67,32 +71,32 @@ class LoginScreen extends GetView<LoginController> {
             keyBoardType: TextInputType.number,
             // validator: (value) => AppValidations.validateContact(value),
             prefixIcon: Obx(
-                  () => InkWell(
-                onTap: () => controller.openCountryCodePicker(context),
-                child: Container(
-                  height: 30,
-                  width: 90,
-                  color: Colors.transparent,
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Row(
-                        children: [
-                          Text(
-                            "+${controller.selectedCountryCode.value?.phoneCode ?? 91}",
-                            style: AppTextStyles.selectHintText,
-                            // fontWeight: FontWeight.w600,
-                          ),
-                          const SizedBox(
-                            width: 8,
-                          ),
-                          SvgPicture.asset(
-                              "assets/icons/country_picker_arrow.svg")
-                        ],
-                      ),
+                () => InkWell(
+              onTap: () => controller.openCountryCodePicker(context),
+              child: Container(
+                height: 30,
+                width: 90,
+                color: Colors.transparent,
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Row(
+                      children: [
+                        Text(
+                          "+${controller.selectedCountryCode.value?.phoneCode ?? 91}",
+                          style: AppTextStyles.selectHintText,
+                          // fontWeight: FontWeight.w600,
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        SvgPicture.asset(
+                            "assets/icons/country_picker_arrow.svg")
+                      ],
                     ),
                   ),
                 ),
+              ),
               ),
             ),
             controller: controller.phoneController,
@@ -113,10 +117,11 @@ class LoginScreen extends GetView<LoginController> {
             child: Text(
               'OR',
               style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'Inter',
-                  color: AppColor.textSecondary),
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                fontFamily: 'Inter',
+                color: AppColor.textSecondary
+              ),
             ),
           ),
           const SizedBox(
@@ -155,8 +160,9 @@ class LoginScreen extends GetView<LoginController> {
                   height: 79,
                   width: 79,
                   decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppColor.backgroundContainer),
+                    shape: BoxShape.circle,
+                    color: AppColor.backgroundContainer
+                  ),
                   child: Center(
                     child: Image.asset(
                       'assets/image/apple.png',

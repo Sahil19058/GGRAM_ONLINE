@@ -76,11 +76,11 @@ class SurveyScreen extends GetView<SurveyController> {
                           onChanged: (_) => controller.toggleOption(controller.others),
                           hintText: "Enter Details",
                         ),
-                        Text(
+                        const Text(
                           "How satisfied are you with your city’s civic bodies (MCG, GMDA etc.)?",
                           style: AppTextStyles.drawerTitle,
                         ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       Obx(() {
@@ -162,19 +162,19 @@ class _CustomVerticalThumb extends SliderComponentShape {
 
   @override
   void paint(
-      PaintingContext context,
-      Offset center, {
-        required Animation<double> activationAnimation,
-        required Animation<double> enableAnimation,
-        required bool isDiscrete,
-        required TextPainter? labelPainter,
-        required RenderBox parentBox,
-        required SliderThemeData sliderTheme,
-        required TextDirection textDirection,
-        required double value,
-        required double textScaleFactor,
-        required Size sizeWithOverflow,
-      }) {
+    PaintingContext context,
+    Offset center, {
+      required Animation<double> activationAnimation,
+      required Animation<double> enableAnimation,
+      required bool isDiscrete,
+      required TextPainter? labelPainter,
+      required RenderBox parentBox,
+      required SliderThemeData sliderTheme,
+      required TextDirection textDirection,
+      required double value,
+      required double textScaleFactor,
+      required Size sizeWithOverflow,
+    }) {
     final paint = Paint()
       ..color = AppColor.buttonColor
       ..style = PaintingStyle.fill;

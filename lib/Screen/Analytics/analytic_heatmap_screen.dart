@@ -25,7 +25,7 @@ class AnalyticHeatmapScreen extends GetView<HeatmapController> {
         ),
       ),
       child: Scaffold(
-        drawer: CustomSideDrawer(),
+        drawer: const CustomSideDrawer(),
         backgroundColor: Colors.transparent,
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(60),
@@ -55,12 +55,16 @@ class AnalyticHeatmapScreen extends GetView<HeatmapController> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text("Analytics", style: AppTextStyles.drawerTitle),
+                          const Text("Analytics",
+                              style: AppTextStyles.drawerTitle),
                           Obx(() => Text(
-                              controller.currentPage.value == 0 ?"Issue Heatmap" :
-                              controller.currentPage.value == 1 ? "How your Ward is doing?" :
-                              "What ails Gurugram ?",
-                              style: AppTextStyles.appbarSubTitle),)
+                            controller.currentPage.value == 0
+                              ? "Issue Heatmap"
+                              : controller.currentPage.value == 1
+                                ? "How your Ward is doing?"
+                                : "What ails Gurugram ?",
+                            style: AppTextStyles.appbarSubTitle),
+                          )
                         ],
                       ),
                     ),
@@ -82,10 +86,10 @@ class AnalyticHeatmapScreen extends GetView<HeatmapController> {
               child: PageView(
                 controller: controller.pageController,
                 onPageChanged: controller.changePage,
-                children:  [
-                    _PageContent(child: const HeatmapWidget()),
-                    _PageContent(child: const WardIsDoingWidget()),
-                    _PageContent(child: const AileGuruGramWidget()),
+                children: [
+                  _PageContent(child: const HeatmapWidget()),
+                  _PageContent(child: const WardIsDoingWidget()),
+                  _PageContent(child: const AileGuruGramWidget()),
                 ],
               ),
             ),
@@ -101,7 +105,9 @@ class AnalyticHeatmapScreen extends GetView<HeatmapController> {
                   height: 14,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: isActive ?  Colors.transparent : AppColor.buttonColor,
+                    color: isActive
+                      ? Colors.transparent
+                      : AppColor.buttonColor,
                     // borderRadius: BorderRadius.circular(8),
                     border: Border.all(
                       color: AppColor.buttonColor,
@@ -109,8 +115,8 @@ class AnalyticHeatmapScreen extends GetView<HeatmapController> {
                     ),
                   ),
                 );
-              }),
-            )),
+               }),
+              )),
             const SizedBox(height: 90),
           ],
         ),
@@ -124,7 +130,6 @@ class AnalyticHeatmapScreen extends GetView<HeatmapController> {
       child: child,
     );
   }
-
 }
 
 // class _PageContent extends StatelessWidget {

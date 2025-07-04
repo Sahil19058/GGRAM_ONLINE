@@ -144,7 +144,7 @@ class ReportRoadScreen extends GetView<ReportRoadController> {
               );
             }),
             const SizedBox(width: 15),
-            Column(
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text("Sectore: ",style: AppTextStyles.reportRoadDetail),
@@ -211,11 +211,11 @@ class ReportStatCard extends StatelessWidget {
             title,
             textAlign: TextAlign.center,
             style: const TextStyle(
-                fontSize: 14,
-                color: AppColor.textSecondary,
-                fontWeight: FontWeight.w500,
-                height: 1.3,
-                fontFamily: 'Inter'
+              fontSize: 14,
+              color: AppColor.textSecondary,
+              fontWeight: FontWeight.w500,
+              height: 1.3,
+              fontFamily: 'Inter'
             ),
           ),
         ],

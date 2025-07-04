@@ -58,8 +58,8 @@ class ContactUsScreen extends GetView<ContactUsController> {
             ],
           ),
         ),
-        ),
-      );
+      ),
+    );
   }
 
   Widget _buildBody(){

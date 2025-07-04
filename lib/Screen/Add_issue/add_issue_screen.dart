@@ -13,7 +13,6 @@ import '../../../Widgets/common_appbar.dart';
 import '../../../Widgets/custom_drawer.dart';
 import '../BottomNavBar/bottom_nav_bar_controller.dart';
 
-
 class AddIssueScreen extends GetView<AddIssueController> {
   const AddIssueScreen({
     super.key,
@@ -21,7 +20,6 @@ class AddIssueScreen extends GetView<AddIssueController> {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       decoration: const BoxDecoration(
         color: AppColor.backgroundContainer,
@@ -39,46 +37,46 @@ class AddIssueScreen extends GetView<AddIssueController> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(kToolbarHeight),
           child: Obx(() => CommonAppBar(
-            actions: [
-              Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: IconButton(
-                  onPressed: () {
-                    Get.find<BottomNavController>().openDrawer();
-                    // Scaffold.of(context).openEndDrawer();
-                  },
-                  icon: SvgPicture.asset('assets/icons/menu.svg'),
-                ),
-              )
-            ],
-            title: controller.currentSector.value.isEmpty
-                ? "Locating..."
-                : controller.currentSector.value,
-            leading: Padding(
-              padding: const EdgeInsets.only(left: 19),
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      offset: const Offset(0, -6),
-                      blurRadius: 10,
-                      spreadRadius: 0,
-                      color: Colors.grey.shade300,
-                      inset: true,
-                      blurStyle: BlurStyle.inner,
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: IconButton(
+                      onPressed: () {
+                        Get.find<BottomNavController>().openDrawer();
+                        // Scaffold.of(context).openEndDrawer();
+                      },
+                      icon: SvgPicture.asset('assets/icons/menu.svg'),
                     ),
-                  ],
-                ),
-                child: Center(
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: SvgPicture.asset("assets/icons/landmark.svg"),
+                  )
+                ],
+                title: controller.currentSector.value.isEmpty
+                    ? "Locating..."
+                    : controller.currentSector.value,
+                leading: Padding(
+                  padding: const EdgeInsets.only(left: 19),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          offset: const Offset(0, -6),
+                          blurRadius: 10,
+                          spreadRadius: 0,
+                          color: Colors.grey.shade300,
+                          inset: true,
+                          blurStyle: BlurStyle.inner,
+                        ),
+                      ],
+                    ),
+                    child: Center(
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: SvgPicture.asset("assets/icons/landmark.svg"),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-          )),
+              )),
         ),
 
         // body: Container(
@@ -109,19 +107,17 @@ class AddIssueScreen extends GetView<AddIssueController> {
       padding: const EdgeInsets.all(16),
       child: Column(
         children: [
-          Obx(() => Container(
-              height: 414,
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    offset: const Offset(0, 6),
-                    blurRadius: 10,
-                    spreadRadius: 0,
-                    color: Colors.grey.shade300,
-                  ),
-                ],
-                borderRadius: BorderRadius.circular(16),
-              ), clipBehavior: Clip.antiAlias, child: GoogleMap(
+          Obx(() => Container(height: 414, decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                offset: const Offset(0, 6),
+                blurRadius: 10,
+                spreadRadius: 0,
+                color: Colors.grey.shade300,
+              ),
+            ],
+            borderRadius: BorderRadius.circular(16),
+          ), clipBehavior: Clip.antiAlias, child: GoogleMap(
             initialCameraPosition: CameraPosition(
               target: controller.currentLatLng.value,
               zoom: 17,
@@ -181,21 +177,21 @@ class AddIssueScreen extends GetView<AddIssueController> {
             child: Row(
               children: [
                 _buildContainer("assets/icons/trash.svg", "Report Trash\nIssue",
-                        () {
-                      // Handle tap
-                    }),
+                    () {
+                  // Handle tap
+                }),
                 const SizedBox(width: 16),
                 _buildContainer("assets/icons/road.svg", "Report Road \nIssue",
-                        () {
-                      // Handle tap
-                      // Get.toNamed(RouteName.reportRoadScreen);
-                      Get.toNamed(RouteName.uploadImageScreen);
-                    }),
+                    () {
+                  // Handle tap
+                  // Get.toNamed(RouteName.reportRoadScreen);
+                  Get.toNamed(RouteName.uploadImageScreen);
+                }),
                 const SizedBox(width: 16),
                 _buildContainer("assets/icons/road.svg", "Report Road \nIssue",
-                        () {
-                      // Handle tap
-                    }),
+                    () {
+                  // Handle tap
+                }),
               ],
             ),
           ),
