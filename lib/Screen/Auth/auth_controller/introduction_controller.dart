@@ -5,11 +5,12 @@ import 'package:image_picker/image_picker.dart';
 
 class IntroductionController extends GetxController {
   final formKey = GlobalKey<FormState>();
-
   final name = TextEditingController();
   final email = TextEditingController();
   final age = TextEditingController();
   final homePin = TextEditingController();
+
+  final argument = Get.arguments;
 
   RxString? selectedGender = RxString('');
   final List<String> genderOptions = ['Male', 'Female', 'Other'];
@@ -37,4 +38,7 @@ class IntroductionController extends GetxController {
   bool validateForm() {
     return formKey.currentState?.validate() ?? false;
   }
+
+
+
 }

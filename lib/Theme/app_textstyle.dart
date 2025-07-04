@@ -125,5 +125,50 @@ class AppTextStyles {
       fontFamily: "Inter",
       fontSize: 24,
       color: AppColor.buttonColor);
+  static const TextStyle tellAboutYourSelf = TextStyle(
+      fontWeight: FontWeight.w500,
+      fontFamily: "Inter",
+      fontSize: 15,
+      color: AppColor.outlineBorder);
+  static const TextStyle introText = TextStyle(
+      fontWeight: FontWeight.w500,
+      fontFamily: "Inter",
+      fontSize: 17,
+      color: AppColor.introText);
+  static const TextStyle sliderText = TextStyle(
+      fontWeight: FontWeight.w500,
+      fontFamily: "Inter",
+      fontSize: 14,
+      color: AppColor.textPrimary);
+  static const TextStyle reportRoadDetail = TextStyle(
+      fontWeight: FontWeight.w600,
+      fontFamily: "Inter",
+      fontSize: 14,
+      color: AppColor.textSecondary);
+  static const TextStyle reportRoadTitle = TextStyle(
+      fontWeight: FontWeight.w600,
+      fontFamily: "Inter",
+      fontSize: 18,
+      color: AppColor.reportRoadTitle);
+  static const TextStyle reportRoadCardTitle = TextStyle(
+      fontWeight: FontWeight.w500,
+      fontFamily: "Inter",
+      fontSize: 17,
+      color: AppColor.textSecondary);
+  static const TextStyle reportRoadCardSubTitle = TextStyle(
+      fontWeight: FontWeight.w400,
+      fontFamily: "Inter",
+      fontSize: 12,
+      color: AppColor.textSecondary);
+  static const TextStyle reportRoadCardDescription = TextStyle(
+      fontWeight: FontWeight.w400,
+      fontFamily: "Inter",
+      fontSize: 10,
+      color: AppColor.textSecondary);
+  static const TextStyle reportRoadCardPeopleCount = TextStyle(
+      fontWeight: FontWeight.w600,
+      fontFamily: "Inter",
+      fontSize: 10,
+      color: AppColor.textSecondary);
 
 }

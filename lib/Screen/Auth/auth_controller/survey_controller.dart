@@ -11,6 +11,8 @@ class SurveyController extends GetxController {
 
   final otherController = TextEditingController();
 
+  RxInt satisfactionLevel = 0.obs;
+
   List<RxBool> get selectedOptions => [
     brokenRoads,
     waterLogging,

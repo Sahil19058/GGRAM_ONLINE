@@ -27,11 +27,7 @@ class InfoPageScreen extends GetView<InfoPageController> {
         ),
       ),
       child: Scaffold(
-        drawer: CustomSideDrawer(
-          onLogout: () {
-            // Perform logout logic
-          },
-        ),
+        drawer: CustomSideDrawer(),
         backgroundColor: Colors.transparent,
         appBar: CommonAppBar(
           actions: [

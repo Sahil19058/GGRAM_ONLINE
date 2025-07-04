@@ -25,7 +25,7 @@ class AnalyticHeatmapScreen extends GetView<HeatmapController> {
         ),
       ),
       child: Scaffold(
-        drawer: CustomSideDrawer(onLogout: () {}),
+        drawer: CustomSideDrawer(),
         backgroundColor: Colors.transparent,
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(60),

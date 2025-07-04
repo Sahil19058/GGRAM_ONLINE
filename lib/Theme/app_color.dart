@@ -3,6 +3,7 @@ import 'dart:ui';
 class AppColor {
 
   static const Color textPrimary = Color(0xff003958);
+  static const Color introText = Color(0xff120202);
   static const Color textSecondary = Color(0xff00314C);
   static const Color backgroundContainer = Color(0xffFFFFFF);
   static const Color buttonColor = Color(0xffFF594C);
@@ -21,6 +22,9 @@ class AppColor {
   static const Color resolvedColor = Color(0xffC3FECA);
   static const Color inProgressTextColor = Color(0xff854D0F);
   static const Color resolvedTextColor = Color(0xff0F8532);
+  static const Color sliderColor = Color(0xffCDCDCD);
+  static const Color reportRoadTitle = Color(0xffE71616);
+  static const Color dialogButtonSecondary = Color(0xffADADAD);
 
 
 }

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:ggram_online/Screen/home/home_controller/home_controller.dart';
+import '../home_controller/home_controller.dart';
+
 
 
 class HomeBinding extends Bindings{

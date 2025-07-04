@@ -4,10 +4,11 @@ import 'package:get/get.dart';
 import 'package:ggram_online/Routes/route_name.dart';
 import 'package:ggram_online/Theme/app_color.dart';
 import 'package:ggram_online/Widgets/common_appbar.dart';
-import '../../../Theme/app_textstyle.dart';
-import '../../../Widgets/common_button.dart';
-import '../../../Widgets/common_textfield.dart';
-import '../home_controller/report_road_controller.dart';
+import '../../Theme/app_textstyle.dart';
+import '../../Widgets/common_button.dart';
+import '../../Widgets/common_textfield.dart';
+import 'add_issue_controller/report_road_controller.dart';
+
 
 class ReportRoadScreen extends GetView<ReportRoadController> {
   const ReportRoadScreen({super.key});
@@ -42,31 +43,6 @@ class ReportRoadScreen extends GetView<ReportRoadController> {
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 40),
               child: InnerShadowButton(
-                // onPressed: () {
-                //   showDialog(
-                //     context: context,
-                //     builder: (_) => CustomCommonPopup(
-                //         title: "Thank You!",
-                //         subtitle:
-                //             "Thank you for making Gurugram Better. We will get back to you soon!",
-                //         onContinue: () {},
-                //         showButton: false,
-                //         body: const Row(
-                //           spacing: 5,
-                //           children: [
-                //             ReportStatCard(
-                //                 count: "25", title: "Potholes\nReported"),
-                //             ReportStatCard(
-                //                 count: "04", title: "Water\nLogging"),
-                //             ReportStatCard(
-                //                 count: "12", title: "Broken\nFootpath"),
-                //           ],
-                //         )),
-                //   );
-                //   Future.delayed(const Duration(seconds: 3), () {
-                //     Get.offAllNamed(RouteName.bottomNavBar); // navigate to Home
-                //   });
-                // },
                 onPressed: () {
                   Get.toNamed(RouteName.issueDetailScreen,);
                 },
@@ -85,7 +61,7 @@ class ReportRoadScreen extends GetView<ReportRoadController> {
       children: [
         const Text(
           "Please share a few more details about the issue.",
-          style: AppTextStyles.loginSubTitle,
+          style: AppTextStyles.infoPageContainerTitle,
         ),
         const SizedBox(height: 24),
         const Text("Issue Type", style: AppTextStyles.reportForm),
@@ -132,42 +108,50 @@ class ReportRoadScreen extends GetView<ReportRoadController> {
         Row(
           children: [
             Obx(() {
-              final image = controller.uploadedImage.value;
               return GestureDetector(
                 onTap: () => Get.toNamed(RouteName.uploadImageScreen),
-                child: SizedBox(
-                  height:  186 ,
-                  width:163,
+                child: Container(
+                  height: 186,
+                  width: 198,
                   child: DottedBorder(
+                    padding: EdgeInsets.all(6),
                     color: AppColor.outlineBorder,
                     strokeWidth: 2.0,
                     dashPattern: const [4, 4],
                     borderType: BorderType.RRect,
-                    radius: const Radius.circular(16), child: SizedBox(),
-                    // child: image != null && image.path.isNotEmpty
-                    //     ? ClipRRect(
-                    //   borderRadius: BorderRadius.circular(16),
-                    //   child: Image.file(
-                    //     image,
-                    //     fit: BoxFit.cover,
-                    //     width: double.infinity,
-                    //   ),
-                    // )
-                    //     : Center(
-                    //   child: Column(
-                    //     mainAxisAlignment: MainAxisAlignment.center,
-                    //     children: [
-                    //       SvgPicture.asset("assets/icons/upload.svg"),
-                    //       const SizedBox(height: 10),
-                    //       const Text("Upload from Device",
-                    //           style: AppTextStyles.reportForm),
-                    //     ],
-                    //   ),
-                    // ),
+                    radius: const Radius.circular(16),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: controller.uploadedImage.value != null
+                          ? Image.file(
+                        controller.uploadedImage.value!,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                        height: double.infinity,
+                      )
+                          : Container(
+                        color: Colors.grey.shade200,
+                        child: const Center(
+                          child: Text(
+                            "No Image",
+                            style: TextStyle(color: AppColor.textPrimary),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               );
             }),
+            const SizedBox(width: 15),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Sectore: ",style: AppTextStyles.reportRoadDetail),
+                Text("Ward: ",style: AppTextStyles.reportRoadDetail),
+                Text("Counsellor:",style: AppTextStyles.reportRoadDetail),
+              ],
+            )
           ],
         ),
         const SizedBox(height: 20),

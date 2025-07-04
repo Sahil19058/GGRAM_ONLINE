@@ -3,25 +3,25 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
-import 'package:ggram_online/Screen/home/home_controller/home_controller.dart';
+import 'package:ggram_online/Screen/Add_issue/add_issue_controller/add_issue_controller.dart';
 import 'package:ggram_online/Theme/app_color.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:shimmer/shimmer.dart';
 import '../../../Routes/route_name.dart';
 import '../../../Theme/app_textstyle.dart';
 import '../../../Widgets/common_appbar.dart';
 import '../../../Widgets/custom_drawer.dart';
-import '../../BottomNavBar/bottom_nav_bar_controller.dart';
+import '../BottomNavBar/bottom_nav_bar_controller.dart';
 
-class HomeScreen extends GetView<HomeController> {
-  const HomeScreen({
+
+class AddIssueScreen extends GetView<AddIssueController> {
+  const AddIssueScreen({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       decoration: const BoxDecoration(
         color: AppColor.backgroundContainer,
@@ -32,54 +32,53 @@ class HomeScreen extends GetView<HomeController> {
         ),
       ),
       child: Scaffold(
+        // key: Get.find<BottomNavController>().scaffoldKey,
         backgroundColor: Colors.transparent,
-        drawer: CustomSideDrawer(
-          onLogout: () {
-            // Perform logout logic
-          },
-        ),
+        endDrawer: const CustomSideDrawer(),
+        // drawer: const CustomSideDrawer(),
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(kToolbarHeight),
           child: Obx(() => CommonAppBar(
-                actions: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10),
-                    child: IconButton(
-                      onPressed: () {
-                        Get.find<BottomNavController>().openDrawer();
-                      },
-                      icon: SvgPicture.asset('assets/icons/menu.svg'),
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: IconButton(
+                  onPressed: () {
+                    Get.find<BottomNavController>().openDrawer();
+                    // Scaffold.of(context).openEndDrawer();
+                  },
+                  icon: SvgPicture.asset('assets/icons/menu.svg'),
+                ),
+              )
+            ],
+            title: controller.currentSector.value.isEmpty
+                ? "Locating..."
+                : controller.currentSector.value,
+            leading: Padding(
+              padding: const EdgeInsets.only(left: 19),
+              child: Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      offset: const Offset(0, -6),
+                      blurRadius: 10,
+                      spreadRadius: 0,
+                      color: Colors.grey.shade300,
+                      inset: true,
+                      blurStyle: BlurStyle.inner,
                     ),
-                  )
-                ],
-                title: controller.currentSector.value.isEmpty
-                    ? "Locating..."
-                    : controller.currentSector.value,
-                leading: Padding(
-                  padding: const EdgeInsets.only(left: 19),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          offset: const Offset(0, -6),
-                          blurRadius: 10,
-                          spreadRadius: 0,
-                          color: Colors.grey.shade300,
-                          inset: true,
-                          blurStyle: BlurStyle.inner,
-                        ),
-                      ],
-                    ),
-                    child: Center(
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: SvgPicture.asset("assets/icons/landmark.svg"),
-                      ),
-                    ),
+                  ],
+                ),
+                child: Center(
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: SvgPicture.asset("assets/icons/landmark.svg"),
                   ),
                 ),
-              )),
+              ),
+            ),
+          )),
         ),
 
         // body: Container(
@@ -113,24 +112,30 @@ class HomeScreen extends GetView<HomeController> {
           Obx(() => Container(
               height: 414,
               decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    offset: const Offset(0, 6),
+                    blurRadius: 10,
+                    spreadRadius: 0,
+                    color: Colors.grey.shade300,
+                  ),
+                ],
                 borderRadius: BorderRadius.circular(16),
-              ),
-              clipBehavior: Clip.antiAlias,
-              child: GoogleMap(
-                initialCameraPosition: CameraPosition(
-                  target: controller.currentLatLng.value,
-                  zoom: 17,
-                ),
-                myLocationButtonEnabled: false,
-                onMapCreated: controller.onMapCreated,
-                myLocationEnabled: true,
-                zoomControlsEnabled: false,
-                mapType: MapType.normal,
-                gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
-                  Factory<OneSequenceGestureRecognizer>(
-                      () => EagerGestureRecognizer()),
-                },
-              ))),
+              ), clipBehavior: Clip.antiAlias, child: GoogleMap(
+            initialCameraPosition: CameraPosition(
+              target: controller.currentLatLng.value,
+              zoom: 17,
+            ),
+            myLocationButtonEnabled: false,
+            onMapCreated: controller.onMapCreated,
+            myLocationEnabled: true,
+            zoomControlsEnabled: false,
+            mapType: MapType.normal,
+            gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>{
+              Factory<OneSequenceGestureRecognizer>(() => EagerGestureRecognizer()),
+            },
+          )
+          )),
 
           /// DELHI EXAMPLE
           // Container(
@@ -176,21 +181,21 @@ class HomeScreen extends GetView<HomeController> {
             child: Row(
               children: [
                 _buildContainer("assets/icons/trash.svg", "Report Trash\nIssue",
-                    () {
-                  // Handle tap
-                }),
+                        () {
+                      // Handle tap
+                    }),
                 const SizedBox(width: 16),
                 _buildContainer("assets/icons/road.svg", "Report Road \nIssue",
-                    () {
-                  // Handle tap
-                  // Get.toNamed(RouteName.reportRoadScreen);
-                  Get.toNamed(RouteName.uploadImageScreen);
-                }),
+                        () {
+                      // Handle tap
+                      // Get.toNamed(RouteName.reportRoadScreen);
+                      Get.toNamed(RouteName.uploadImageScreen);
+                    }),
                 const SizedBox(width: 16),
                 _buildContainer("assets/icons/road.svg", "Report Road \nIssue",
-                    () {
-                  // Handle tap
-                }),
+                        () {
+                      // Handle tap
+                    }),
               ],
             ),
           ),

@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:ggram_online/Routes/route_name.dart';
 import 'package:ggram_online/Screen/profile/profile_controller/contact_us_controller.dart';
 import 'package:ggram_online/Widgets/common_button.dart';
-
 import '../../Theme/app_color.dart';
 import '../../Theme/app_textstyle.dart';
 import '../../Widgets/common_textfield.dart';
@@ -84,6 +83,8 @@ class ContactUsScreen extends GetView<ContactUsController> {
               child: Image.asset("assets/icons/Vector.png"),
             ),
             hint: const Text("Select", style: AppTextStyles.selectHintText),
+            borderRadius: BorderRadius.circular(20),
+            dropdownColor: AppColor.backgroundContainer,
             items: controller.topicList.map((String value) {
               return DropdownMenuItem<String>(value: value, child: Text(value));
             }).toList(),
@@ -105,5 +106,4 @@ class ContactUsScreen extends GetView<ContactUsController> {
       ],
     );
   }
-
 }

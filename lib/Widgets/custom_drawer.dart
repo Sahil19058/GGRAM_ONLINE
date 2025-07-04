@@ -8,9 +8,12 @@ import '../Theme/app_color.dart';
 import '../Theme/app_textstyle.dart';
 
 class CustomSideDrawer extends StatelessWidget {
-  final VoidCallback onLogout;
+  // final VoidCallback onLogout;
 
-  const CustomSideDrawer({super.key, required this.onLogout});
+  const CustomSideDrawer({
+    super.key,
+  });
+  // required this.onLogout
 
   @override
   Widget build(BuildContext context) {
@@ -18,24 +21,23 @@ class CustomSideDrawer extends StatelessWidget {
       backgroundColor: AppColor.backgroundContainer,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topRight: Radius.circular(32),
-          bottomRight: Radius.circular(32),
+          topLeft: Radius.circular(32),
+          bottomLeft: Radius.circular(32),
         ),
       ),
-      width: MediaQuery
-          .of(context)
-          .size
-          .width * 0.75,
+      width: MediaQuery.of(context).size.width * 0.75,
       child: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // User Info
-             Padding(
+            Padding(
               padding: EdgeInsets.all(16),
               child: Row(
                 children: [
-                  SizedBox(height: 100,),
+                  SizedBox(
+                    height: 100,
+                  ),
                   GestureDetector(
                     onTap: () {
                       Get.toNamed(RouteName.profileDetailScreen);
@@ -52,8 +54,7 @@ class CustomSideDrawer extends StatelessWidget {
                     children: [
                       Text("Good Morning", style: AppTextStyles.drawerMinimal),
                       SizedBox(height: 4),
-                      Text(
-                          "Anna Stenkovic", style: AppTextStyles.drawerTitle),
+                      Text("Anna Stenkovic", style: AppTextStyles.drawerTitle),
                     ],
                   )
                 ],
@@ -72,7 +73,16 @@ class CustomSideDrawer extends StatelessWidget {
             }),
             _drawerItem("aboutUs.svg", "About Us", () {}),
             _drawerItem("tellAFriend.svg", "Tell a Friend", () {}),
-            _drawerItem("logout.svg", "Logout", onLogout,isLast: true),
+            _drawerItem("logout.svg", "Logout", () {}),
+            const Spacer(),
+            const Center(
+                child: Text(
+              "v1.0.0+build.456",
+              style: AppTextStyles.drawerSubTitle,
+            )),
+            const SizedBox(
+              height: 30,
+            )
           ],
         ),
       ),
@@ -98,12 +108,13 @@ class CustomSideDrawer extends StatelessWidget {
               ),
             ]),
             child: Center(
-                child: IconButton(
-                  onPressed: () {},
-                  icon: SvgPicture.asset("assets/icons/$icon"),
-                )),
+              child: SvgPicture.asset("assets/icons/$icon"),
+            ),
           ),
-          title: Text(title,style: AppTextStyles.drawerSubTitle,),
+          title: Text(
+            title,
+            style: AppTextStyles.drawerSubTitle,
+          ),
           onTap: onTap,
         ),
         if (!isLast)

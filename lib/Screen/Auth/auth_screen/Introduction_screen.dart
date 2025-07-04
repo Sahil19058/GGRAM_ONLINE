@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ggram_online/Routes/route_name.dart';
@@ -36,8 +35,7 @@ class IntroductionScreen extends GetView<IntroductionController> {
                 borderRadius: BorderRadius.circular(40),
               ),
               margin: const EdgeInsets.only(
-                  top: 40, bottom: 20, left: 16, right: 16
-              ),
+                  top: 40, bottom: 20, left: 16, right: 16),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
               child: SingleChildScrollView(
                 child: Column(
@@ -45,8 +43,8 @@ class IntroductionScreen extends GetView<IntroductionController> {
                     children: [
                       Row(
                         children: [
-                          const Text(
-                            "Introduce Yourself",
+                          Text(
+                            "Welcome ${controller.argument}",
                             style: AppTextStyles.authTitle,
                           ),
                           const Spacer(),
@@ -83,8 +81,11 @@ class IntroductionScreen extends GetView<IntroductionController> {
                                   image: DecorationImage(
                                     // fit: BoxFit.fill,
                                     image: controller.pickedImage.value != null
-                                        ? FileImage(controller.pickedImage.value!) as ImageProvider
-                                        : const AssetImage('assets/image/user.png'),
+                                        ? FileImage(
+                                                controller.pickedImage.value!)
+                                            as ImageProvider
+                                        : const AssetImage(
+                                            'assets/image/user.png'),
                                   ),
                                 ),
                               );
@@ -103,7 +104,8 @@ class IntroductionScreen extends GetView<IntroductionController> {
                                     shape: BoxShape.circle,
                                     color: AppColor.buttonColor,
                                     image: DecorationImage(
-                                      image: AssetImage("assets/image/camera.png"),
+                                      image:
+                                          AssetImage("assets/image/camera.png"),
                                     ),
                                   ),
                                 ),
@@ -113,23 +115,22 @@ class IntroductionScreen extends GetView<IntroductionController> {
                         ),
                       ),
                       const SizedBox(height: 25),
+                      const Text(
+                        "Help us understand your civic issues better",
+                        style: AppTextStyles.introText,
+                      ),
+                      const SizedBox(height: 25),
                       Form(
                         key: controller.formKey,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             TextFieldView(
-                              title: "Name",
-                              controller: controller.name,
-                              hintText: 'Please enter your name',
-                              validator: FormValidators.validateName,
-                            ),
-                            const SizedBox(height: 10),
-                            TextFieldView(
                               title: "Email ID",
                               controller: controller.email,
                               hintText: 'Please enter your email ID',
                               validator: FormValidators.validateEmail,
+                              maxLines: 1,
                             ),
                             const SizedBox(height: 10),
                             TextFieldView(
@@ -137,15 +138,8 @@ class IntroductionScreen extends GetView<IntroductionController> {
                               controller: controller.age,
                               hintText: 'Please enter your age',
                               keyBoardType: TextInputType.number,
-                              validator:  FormValidators.validateAge,
-                            ),
-                            const SizedBox(height: 10),
-                            TextFieldView(
-                              title: "Home PIN",
-                              controller: controller.homePin,
-                              hintText: 'Please enter your home PIN',
-                              keyBoardType: TextInputType.number,
-                              validator:  FormValidators.validatePin
+                              validator: FormValidators.validateAge,
+                              maxLines: 1,
                             ),
                             const SizedBox(height: 10),
                             const Text(
@@ -185,7 +179,60 @@ class IntroductionScreen extends GetView<IntroductionController> {
                                         color: AppColor.textPrimary,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 15)),
-                                validator:  FormValidators.validateGender,
+                                validator: FormValidators.validateGender,
+                                borderRadius: BorderRadius.circular(20),
+                                dropdownColor: AppColor.backgroundContainer,
+                                items: controller.genderOptions
+                                    .map((String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(value),
+                                  );
+                                }).toList(),
+                                onChanged: (newValue) {
+                                  controller.selectedGender?.value = newValue!;
+                                },
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            const Text(
+                              "Occupation",
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'Inter',
+                                color: AppColor.textSecondary,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16),
+                              decoration: BoxDecoration(
+                                color: AppColor.textFiledBackground,
+                                borderRadius: BorderRadius.circular(30),
+                                border: Border.all(color: Colors.grey.shade400),
+                              ),
+                              child: DropdownButtonFormField<String>(
+                                value: controller
+                                            .selectedGender?.value.isNotEmpty ==
+                                        true
+                                    ? controller.selectedGender?.value
+                                    : null,
+                                decoration: const InputDecoration(
+                                    border: InputBorder.none),
+                                icon: Container(
+                                  padding: const EdgeInsets.all(2),
+                                  decoration: const BoxDecoration(
+                                      shape: BoxShape.circle),
+                                  child: Image.asset("assets/icons/Vector.png"),
+                                ),
+                                hint: const Text("Select",
+                                    style: TextStyle(
+                                        color: AppColor.textPrimary,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 15)),
+                                validator: FormValidators.validateGender,
                                 borderRadius: BorderRadius.circular(20),
                                 dropdownColor: AppColor.backgroundContainer,
                                 items: controller.genderOptions

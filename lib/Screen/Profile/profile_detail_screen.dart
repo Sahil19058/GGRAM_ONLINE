@@ -221,9 +221,11 @@ class ProfileDetailScreen extends GetView<ProfileDetailController> {
           //   color: isResolved ? AppColor.resolvedColor: AppColor.inProgressColor,
           //   size: 16,
           // ),
-          SvgPicture.asset(isResolved
+          SvgPicture.asset(
+              isResolved
               ? "assets/icons/resolved.svg"
-              : "assets/icons/pending.svg"),
+              : "assets/icons/pending.svg"
+          ),
           SizedBox(width: 2),
           Text(
             status,

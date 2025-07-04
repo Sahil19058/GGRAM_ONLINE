@@ -133,6 +133,8 @@ class AileGuruGramWidget extends GetView<AlieGuruGramController> {
           child: DropdownButtonFormField<String>(
             value: value?.isNotEmpty == true ? value : null,
             decoration: const InputDecoration(border: InputBorder.none),
+            dropdownColor: AppColor.backgroundContainer,
+            borderRadius: BorderRadius.circular(20),
             icon: Padding(
               padding: const EdgeInsets.all(2),
               child: Image.asset("assets/icons/Vector.png"),

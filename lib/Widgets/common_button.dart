@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ggram_online/Theme/app_color.dart';
 
 class InnerShadowButton extends StatelessWidget {
   final String text;
@@ -16,7 +17,7 @@ class InnerShadowButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const backgroundColor = Color(0xFFFF594C);
+    const backgroundColor = AppColor.buttonColor;
     const innerShadowColor = Color.fromRGBO(0, 0, 0, 0.12);
 
     return GestureDetector(
@@ -55,7 +56,7 @@ class InnerShadowButton extends StatelessWidget {
                 style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  letterSpacing: 1.2,
+                  // letterSpacing: 1.2,
                 ),
               ),
             ),

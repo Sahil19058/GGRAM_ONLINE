@@ -11,6 +11,8 @@ class CustomCommonPopup extends StatelessWidget {
   final bool showButton;
   final String buttonText;
   final Widget? body; // 👈 Optional extra content widget
+  final String? imagePath; // 👈 Optional image path
+
 
   const CustomCommonPopup({
     super.key,
@@ -20,6 +22,7 @@ class CustomCommonPopup extends StatelessWidget {
     this.showButton = true,
     this.buttonText = "Continue",
     this.body, // 👈 Assign in constructor
+    this.imagePath, // 👈 Assign in constructor
   });
 
   @override
@@ -39,7 +42,7 @@ class CustomCommonPopup extends StatelessWidget {
                 margin: const EdgeInsets.only(top: 42),
                 decoration: BoxDecoration(
                   color: AppColor.backgroundContainer,
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(32),
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -94,9 +97,9 @@ class CustomCommonPopup extends StatelessWidget {
                     ),
                     child: Center(
                       child: Image.asset(
-                        "assets/image/Thumb.png",
-                        height: 40,
-                        width: 40,
+                        imagePath ?? "assets/image/thumbs-up.png",
+                        height: 60,
+                        width: 60,
                       ),
                     ),
                   ),

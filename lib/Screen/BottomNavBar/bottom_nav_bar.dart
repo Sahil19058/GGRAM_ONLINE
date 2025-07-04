@@ -12,9 +12,8 @@ class BottomNavBar extends GetView<BottomNavController> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: controller.scaffoldKey,
-      drawer: CustomSideDrawer(onLogout: () {
-        // handle logout
-      }),
+      // drawer: CustomSideDrawer(),
+      endDrawer: const CustomSideDrawer(),
       extendBody: true,
       backgroundColor: Colors.grey[200],
       body: Obx(() => controller.pages[controller.selectedIndex.value]),
@@ -38,7 +37,7 @@ class BottomNavBar extends GetView<BottomNavController> {
                 children: List.generate(controller.svgIcons.length, (index) {
                   final isSelected = controller.selectedIndex.value == index;
                   return IconButton(
-                    padding: const EdgeInsets.symmetric(horizontal: 40),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     icon: SvgPicture.asset(
                       controller.svgIcons[index],
                       colorFilter: ColorFilter.mode(

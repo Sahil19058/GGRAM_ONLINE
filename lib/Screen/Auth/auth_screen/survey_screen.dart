@@ -6,133 +6,186 @@ import '../../../Theme/app_textstyle.dart';
 import '../../../Widgets/common_button.dart';
 import '../../../Widgets/common_checkbox.dart';
 import '../../../Widgets/common_checkbox_with_textfieldview.dart';
-
 import '../auth_controller/survey_controller.dart';
 
 class SurveyScreen extends GetView<SurveyController> {
   const SurveyScreen({super.key});
 
   @override
-  @override
   Widget build(BuildContext context) {
     return Container(
       height: double.infinity,
       width: double.infinity,
       decoration: const BoxDecoration(
-          color: AppColor.backgroundContainer,
-          image: DecorationImage(
-            fit: BoxFit.fill,
-            image: AssetImage("assets/image/Splash.png"),
-          )),
+        color: AppColor.backgroundContainer,
+        image: DecorationImage(
+          fit: BoxFit.fill,
+          image: AssetImage("assets/image/Splash.png"),
+        ),
+      ),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.transparent,
-        body:    Padding(
-          padding:
-          const EdgeInsets.only(top: 40, bottom: 20, left: 16, right: 16),
-          child: Container(
-            decoration: BoxDecoration(
-              color: AppColor.backgroundContainer.withValues(alpha: 0.8),
-              borderRadius: BorderRadius.circular(40),
-            ),
-            child: Padding(
-              padding:
-              const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-              child: SingleChildScrollView(
+        body: Padding(
+          padding: const EdgeInsets.only(top: 40, bottom: 20, left: 16, right: 16),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return SingleChildScrollView(
                 child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: MediaQuery.of(context).size.height - 120,
-                  ),
-                  child: IntrinsicHeight(
+                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: AppColor.backgroundContainer.withOpacity(0.8),
+                      borderRadius: BorderRadius.circular(40),
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                     child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              const Text(
-                                "Select the top 3 Issues",
-                                style: AppTextStyles.authTitle,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text("Select the top 3 Issues in your City.", style: AppTextStyles.authTitle),
+                        const SizedBox(height: 10),
+                        CommonCheckboxView(
+                          label: "Broken Roads",
+                          value: controller.brokenRoads,
+                          onChanged: (_) => controller.toggleOption(controller.brokenRoads),
+                        ),
+                        CommonCheckboxView(
+                          label: "Water Logging",
+                          value: controller.waterLogging,
+                          onChanged: (_) => controller.toggleOption(controller.waterLogging),
+                        ),
+                        CommonCheckboxView(
+                          label: "No/Broken Footpaths",
+                          value: controller.footpaths,
+                          onChanged: (_) => controller.toggleOption(controller.footpaths),
+                        ),
+                        CommonCheckboxView(
+                          label: "Dust",
+                          value: controller.dust,
+                          onChanged: (_) => controller.toggleOption(controller.dust),
+                        ),
+                        CommonCheckboxView(
+                          label: "Pollution",
+                          value: controller.pollution,
+                          onChanged: (_) => controller.toggleOption(controller.pollution),
+                        ),
+                        CommonCheckboxWithTextFieldView(
+                          label: "Others",
+                          value: controller.others,
+                          controller: controller.otherController,
+                          onChanged: (_) => controller.toggleOption(controller.others),
+                          hintText: "Enter Details",
+                        ),
+                        Text(
+                          "How satisfied are you with your city’s civic bodies (MCG, GMDA etc.)?",
+                          style: AppTextStyles.drawerTitle,
+                        ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Obx(() {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            const SizedBox(height: 8),
+                            SliderTheme(
+                              data: SliderTheme.of(Get.context!).copyWith(
+                                trackHeight: 16,
+                                activeTrackColor: AppColor.sliderColor,
+                                inactiveTrackColor: AppColor.sliderColor,
+                                thumbColor: Colors.transparent,
+                                overlayColor: Colors.transparent,
+                                overlayShape: SliderComponentShape.noOverlay,
+                                thumbShape: _CustomVerticalThumb(),
+                                tickMarkShape: const RoundSliderTickMarkShape(tickMarkRadius: 3),
+                                activeTickMarkColor: AppColor.backgroundContainer,
+                                inactiveTickMarkColor: AppColor.backgroundContainer,
+                                // trackShape: _CustomVerticalThumb(), // Custom track!
+
                               ),
-                              const Spacer(),
-                              GestureDetector(
-                                onTap: () {
-                                  // Handle skip logic here
+                              child: Slider(
+                                min: 0,
+                                max: 10,
+                                divisions: 10,
+                                value: controller.satisfactionLevel.value.toDouble(),
+                                onChanged: (value) {
+                                  controller.satisfactionLevel.value = value.toInt();
                                 },
-                                child: const Text(
-                                  "Skip",
-                                  style: TextStyle(
-                                    color: AppColor.buttonColor,
-                                    fontFamily: "Nunito Sans",
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w900,
-                                    decoration: TextDecoration.underline,
-                                    decorationColor: AppColor.buttonColor,
-                                    decorationThickness: 2,
-                                  ),
+                              ),
+                            ),
+                            const SizedBox(height: 12),
+                            const Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Extremely\nDissatisfied",
+                                  textAlign: TextAlign.center,
+                                  style: AppTextStyles.sliderText,
                                 ),
-                              )
-                            ],
-                          ),
-                          const Text(
-                            "in your City.",
-                            style: AppTextStyles.authTitle,
-                          ),
-                          const SizedBox(height: 10),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CommonCheckboxView(
-                                label: "Broken Roads",
-                                value: controller.brokenRoads,
-                                onChanged: (_) => controller.toggleOption(controller.brokenRoads),
-                              ),
-                              CommonCheckboxView(
-                                label: "Water Logging",
-                                value: controller.waterLogging,
-                                onChanged: (_) => controller.toggleOption(controller.waterLogging),
-                              ),
-                              CommonCheckboxView(
-                                label: "No/Broken Footpaths",
-                                value: controller.footpaths,
-                                onChanged: (_) => controller.toggleOption(controller.footpaths),
-                              ),
-                              CommonCheckboxView(
-                                label: "Dust",
-                                value: controller.dust,
-                                onChanged: (_) => controller.toggleOption(controller.dust),
-                              ),
-                              CommonCheckboxView(
-                                label: "Pollution",
-                                value: controller.pollution,
-                                onChanged: (_) => controller.toggleOption(controller.pollution),
-                              ),
-                              CommonCheckboxWithTextFieldView(
-                                label: "Others",
-                                value: controller.others,
-                                controller: controller.otherController,
-                                onChanged: (_) => controller.toggleOption(controller.others),
-                                hintText: "Enter Details",
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          const Spacer(),
-                          InnerShadowButton(
+                                Text(
+                                  "Extremely\nSatisfied",
+                                  textAlign: TextAlign.center,
+                                  style: AppTextStyles.sliderText,
+                                ),
+                              ],
+                            ),
+                          ],
+                        );
+                      }),
+
+                      const SizedBox(height: 30),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: InnerShadowButton(
                             text: "Submit",
                             onPressed: () {
                               Get.toNamed(RouteName.supportScreen);
                             },
                           ),
-                        ]),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ),
+              );
+            },
           ),
         ),
       ),
     );
   }
 }
+
+class _CustomVerticalThumb extends SliderComponentShape {
+  @override
+  Size getPreferredSize(bool isEnabled, bool isDiscrete) => const Size(20, 40);
+
+  @override
+  void paint(
+      PaintingContext context,
+      Offset center, {
+        required Animation<double> activationAnimation,
+        required Animation<double> enableAnimation,
+        required bool isDiscrete,
+        required TextPainter? labelPainter,
+        required RenderBox parentBox,
+        required SliderThemeData sliderTheme,
+        required TextDirection textDirection,
+        required double value,
+        required double textScaleFactor,
+        required Size sizeWithOverflow,
+      }) {
+    final paint = Paint()
+      ..color = AppColor.buttonColor
+      ..style = PaintingStyle.fill;
+
+    final rect = Rect.fromCenter(center: center, width: 10, height: 60);
+    final rRect = RRect.fromRectAndRadius(rect, const Radius.circular(6));
+
+    context.canvas.drawRRect(rRect, paint);
+  }
+}
+
+
+
+
