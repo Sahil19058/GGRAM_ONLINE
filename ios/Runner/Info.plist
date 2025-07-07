@@ -2,6 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <!-- Camera -->
+    <key>NSCameraUsageDescription</key>
+    <string>We need camera access to take photos of issues.</string>
+
+    <!-- Photo Library (Gallery) -->
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>We need access to your photos to upload existing images.</string>
+
+    <!-- Photo Library Add Only (optional, for saving images) -->
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>We need access to save images to your photo library.</string>
+
+    <!-- Location When In Use -->
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>We need your location to report issues accurately.</string>
+
     <key>io.flutter.embedded_views_preview</key>
     <true/>
     <key>NSLocationWhenInUseUsageDescription</key>
