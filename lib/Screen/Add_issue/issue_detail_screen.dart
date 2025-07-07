@@ -3,6 +3,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:ggram_online/Routes/route_name.dart';
 import 'package:ggram_online/Theme/app_textstyle.dart';
 import 'package:ggram_online/Widgets/common_appbar.dart';
 import 'package:ggram_online/Widgets/common_button.dart';
@@ -34,7 +35,7 @@ class IssueDetailScreen extends GetView<IssueDetailController> {
           padding: const EdgeInsets.all(16),
           child: SingleChildScrollView(
             child: Column(
-              children: [_buildBody()],
+              children: [_buildBody(context)],
             ),
           ),
         ),
@@ -42,7 +43,7 @@ class IssueDetailScreen extends GetView<IssueDetailController> {
     );
   }
 
-  Widget _buildBody() {
+  Widget _buildBody(context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -273,11 +274,96 @@ class IssueDetailScreen extends GetView<IssueDetailController> {
           child: InnerShadowButton(
             text: "NO - My issue is different",
             onPressed: () {
-              // Handle new issue submission
+              showDialog(
+                context: context,
+                barrierDismissible: false, // So user can't dismiss it manually
+                builder: (context) {
+                  // Close the dialog after 3 seconds
+                  Future.delayed(const Duration(seconds: 3), () {
+                    if (Navigator.of(context).canPop()) {
+                      Navigator.of(context).pop();
+                    }
+                    // Optional: navigate or do other action here
+                    Get.offAllNamed(RouteName.bottomNavBar);
+                  });
+
+                  return CustomCommonPopup(
+                    title: "Thank You!",
+                    subtitle: "Thank you for making Gurugram Better We will get back to you soon!",
+                    body: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        _InfoCard(count: "25", label: "Potholes\nReported"),
+                        _InfoCard(count: "04", label: "Water\nLogging"),
+                        _InfoCard(count: "12", label: "Broken\nFootpath"),
+                      ],
+                    ),
+                  );
+                },
+              );
             },
           ),
         ),
       ],
+    );
+  }
+}
+
+class _InfoCard extends StatelessWidget {
+  final String count;
+  final String label;
+
+  const _InfoCard({
+    required this.count,
+    required this.label,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 4),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: AppColor.outlineMinimal, width: 1),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 8,
+              offset: Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Column(
+          children: [
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                count,
+                style: const TextStyle(
+                  color: AppColor.buttonColor,
+                  fontSize: 40,
+                  fontWeight: FontWeight.w700,
+                  fontFamily: 'Inter',
+                ),
+              ),
+            ),
+            // const SizedBox(height: 8),
+            Text(
+              label,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: AppColor.textSecondary,
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                fontFamily: 'Inter',
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

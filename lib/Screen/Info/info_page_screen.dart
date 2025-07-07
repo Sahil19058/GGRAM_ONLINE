@@ -27,7 +27,7 @@ class InfoPageScreen extends GetView<InfoPageController> {
         ),
       ),
       child: Scaffold(
-        drawer: CustomSideDrawer(),
+        drawer: const CustomSideDrawer(),
         backgroundColor: Colors.transparent,
         appBar: CommonAppBar(
           actions: [
@@ -55,7 +55,7 @@ class InfoPageScreen extends GetView<InfoPageController> {
               ),
             ]),
             child: Center(
-                child: IconButton(
+              child: IconButton(
               onPressed: () {},
               icon: SvgPicture.asset("assets/icons/landmark.svg"),
             )),
@@ -106,14 +106,15 @@ class InfoPageScreen extends GetView<InfoPageController> {
             return GestureDetector(
               onTap: () {
                 Get.toNamed(RouteName.officialDetailScreen,
-                    arguments: official);
+                    arguments: official
+                );
               },
               child: Container(
                 height: 127,
                 margin: const EdgeInsets.only(bottom: 16),
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColor.backgroundContainer,
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: const [
                     BoxShadow(
@@ -290,8 +291,7 @@ class _InfoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 120,
-      width:
-          (MediaQuery.of(context).size.width - 48) / 3, // 16 + 16 + 16 spacing
+      width: (MediaQuery.of(context).size.width - 48) / 3, // 16 + 16 + 16 spacing
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),

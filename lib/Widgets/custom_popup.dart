@@ -10,9 +10,8 @@ class CustomCommonPopup extends StatelessWidget {
   final VoidCallback? onContinue;
   final bool showButton;
   final String buttonText;
-  final Widget? body; // 👈 Optional extra content widget
-  final String? imagePath; // 👈 Optional image path
-
+  final Widget? body;
+  final String? imagePath;
 
   const CustomCommonPopup({
     super.key,
@@ -21,8 +20,8 @@ class CustomCommonPopup extends StatelessWidget {
     this.onContinue,
     this.showButton = true,
     this.buttonText = "Continue",
-    this.body, // 👈 Assign in constructor
-    this.imagePath, // 👈 Assign in constructor
+    this.body,
+    this.imagePath,
   });
 
   @override
@@ -66,17 +65,18 @@ class CustomCommonPopup extends StatelessWidget {
                     if (body != null) ...[
                       const SizedBox(height: 16),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24),
-                        child: body!,
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: body ?? SizedBox(),
                       ),
                     ],
-                    const SizedBox(height: 24),
                     if (showButton && onContinue != null)
+                      const SizedBox(height: 24),
+                    if (body == null)
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 24),
                         child: InnerShadowButton(
                           text: buttonText,
-                          onPressed: onContinue!,
+                          onPressed: onContinue ?? () {},
                         ),
                       ),
                     if (showButton) const SizedBox(height: 20),

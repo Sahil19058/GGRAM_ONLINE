@@ -19,5 +19,6 @@ class RouteName {
   static const String issueDetailScreen = '/IssueDetailScreen';
   static const String tellAboutScreen = '/TellAboutScreen';
   static const String addIssueScreen = '/AddIssueScreen';
+  static const String yourReportedIssueScreen = '/YourReportedIssueScreen';
 
 }

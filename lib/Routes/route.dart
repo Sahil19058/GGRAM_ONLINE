@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:ggram_online/Routes/route_name.dart';
 import 'package:ggram_online/Screen/Add_issue/add_issue_binding/add_issue_binding.dart';
+import 'package:ggram_online/Screen/Add_issue/add_issue_binding/your_reported_issue_binding.dart';
 import 'package:ggram_online/Screen/Auth/auth_binding/introduction_binding.dart';
 import 'package:ggram_online/Screen/Auth/auth_binding/otp_binding.dart';
 import 'package:ggram_online/Screen/Auth/auth_binding/survey_binding.dart';
@@ -20,6 +21,7 @@ import '../Screen/Add_issue/add_issue_screen.dart';
 import '../Screen/Add_issue/issue_detail_screen.dart';
 import '../Screen/Add_issue/report_road_screen.dart';
 import '../Screen/Add_issue/upload_image_screen.dart';
+import '../Screen/Add_issue/your_reported_issue_screen.dart';
 import '../Screen/Auth/auth_binding/login_binding.dart';
 import '../Screen/Auth/auth_binding/support_binding.dart';
 import '../Screen/Auth/auth_screen/Introduction_screen.dart';
@@ -136,6 +138,11 @@ class AppRoute {
             name: RouteName.addIssueScreen,
             page: () => const AddIssueScreen(),
             binding: AddIssueBinding()
+        ),
+        GetPage(
+            name: RouteName.yourReportedIssueScreen,
+            page: () => const YourReportedIssueScreen(),
+            binding: YourReportedIssueBinding()
         ),
       ];
 }
