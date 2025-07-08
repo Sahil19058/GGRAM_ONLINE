@@ -253,7 +253,39 @@ class IssueDetailScreen extends GetView<IssueDetailController> {
                             Expanded(
                               child: InnerShadowButton(
                                 text: "Yes",
-                                onPressed: () {},
+                                onPressed: () {
+                                  // Step 1: Navigate to bottom navbar
+                                  Get.offAllNamed(RouteName.bottomNavBar);
+
+                                  // Step 2: Show dialog after navigation completes
+                                  Future.delayed(const Duration(milliseconds: 300), () {
+                                    showDialog(
+                                      context: Get.context!, // Use global context after navigation
+                                      barrierDismissible: false,
+                                      builder: (context) {
+                                        // Auto-dismiss the dialog after 3 seconds
+                                        Future.delayed(const Duration(seconds: 3), () {
+                                          if (Navigator.of(context).canPop()) {
+                                            Navigator.of(context).pop();
+                                          }
+                                        });
+
+                                        return const CustomCommonPopup(
+                                          title: "Thank You!",
+                                          subtitle: "Thank you for making Gurugram Better We will get back to you soon!",
+                                          body: Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              _InfoCard(count: "25", label: "Potholes\nReported"),
+                                              _InfoCard(count: "04", label: "Water\nLogging"),
+                                              _InfoCard(count: "12", label: "Broken\nFootpath"),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  });
+                                },
                               ),
                             )
                           ],
@@ -274,33 +306,37 @@ class IssueDetailScreen extends GetView<IssueDetailController> {
           child: InnerShadowButton(
             text: "NO - My issue is different",
             onPressed: () {
-              showDialog(
-                context: context,
-                barrierDismissible: false, // So user can't dismiss it manually
-                builder: (context) {
-                  // Close the dialog after 3 seconds
-                  Future.delayed(const Duration(seconds: 3), () {
-                    if (Navigator.of(context).canPop()) {
-                      Navigator.of(context).pop();
-                    }
-                    // Optional: navigate or do other action here
-                    Get.offAllNamed(RouteName.bottomNavBar);
-                  });
+              // Step 1: Navigate to bottom navbar
+              Get.offAllNamed(RouteName.bottomNavBar);
 
-                  return CustomCommonPopup(
-                    title: "Thank You!",
-                    subtitle: "Thank you for making Gurugram Better We will get back to you soon!",
-                    body: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        _InfoCard(count: "25", label: "Potholes\nReported"),
-                        _InfoCard(count: "04", label: "Water\nLogging"),
-                        _InfoCard(count: "12", label: "Broken\nFootpath"),
-                      ],
-                    ),
-                  );
-                },
-              );
+              // Step 2: Show dialog after navigation completes
+              Future.delayed(const Duration(milliseconds: 300), () {
+                showDialog(
+                  context: Get.context!, // Use global context after navigation
+                  barrierDismissible: false,
+                  builder: (context) {
+                    // Auto-dismiss the dialog after 3 seconds
+                    Future.delayed(const Duration(seconds: 3), () {
+                      if (Navigator.of(context).canPop()) {
+                        Navigator.of(context).pop();
+                      }
+                    });
+
+                    return const CustomCommonPopup(
+                      title: "Thank You!",
+                      subtitle: "Thank you for making Gurugram Better We will get back to you soon!",
+                      body: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          _InfoCard(count: "25", label: "Potholes\nReported"),
+                          _InfoCard(count: "04", label: "Water\nLogging"),
+                          _InfoCard(count: "12", label: "Broken\nFootpath"),
+                        ],
+                      ),
+                    );
+                  },
+                );
+              });
             },
           ),
         ),

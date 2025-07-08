@@ -25,6 +25,7 @@ class AppColor {
   static const Color sliderColor = Color(0xffCDCDCD);
   static const Color reportRoadTitle = Color(0xffE71616);
   static const Color dialogButtonSecondary = Color(0xffADADAD);
+  static const Color infoPageHeaderContainer = Color(0xff696262);
 
 
 }

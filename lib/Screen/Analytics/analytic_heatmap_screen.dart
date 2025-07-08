@@ -28,7 +28,7 @@ class AnalyticHeatmapScreen extends GetView<HeatmapController> {
         drawer: const CustomSideDrawer(),
         backgroundColor: Colors.transparent,
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(60),
+          preferredSize: const Size.fromHeight(55),
           child: Material(
             elevation: 4,
             shadowColor: Colors.grey.withValues(alpha: 0.2),
@@ -53,17 +53,16 @@ class AnalyticHeatmapScreen extends GetView<HeatmapController> {
                     const SizedBox(width: 8),
                     Expanded(
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text("Analytics",
-                              style: AppTextStyles.drawerTitle),
                           Obx(() => Text(
                             controller.currentPage.value == 0
                               ? "Issue Heatmap"
                               : controller.currentPage.value == 1
                                 ? "How your Ward is doing?"
                                 : "What ails Gurugram ?",
-                            style: AppTextStyles.appbarSubTitle),
+                              style: AppTextStyles.drawerTitle),
                           )
                         ],
                       ),
@@ -71,7 +70,7 @@ class AnalyticHeatmapScreen extends GetView<HeatmapController> {
                     IconButton(
                       icon: SvgPicture.asset('assets/icons/menu.svg'),
                       onPressed: () {
-                        Scaffold.of(context).openDrawer();
+                        Scaffold.of(context).openEndDrawer();
                       },
                     ),
                   ],

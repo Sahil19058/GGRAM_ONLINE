@@ -170,5 +170,14 @@ class AppTextStyles {
       fontFamily: "Inter",
       fontSize: 10,
       color: AppColor.textSecondary);
-
+  static const TextStyle infoContainerHeader = TextStyle(
+      fontWeight: FontWeight.w700,
+      fontFamily: "Roboto",
+      fontSize: 19.25,
+      color: AppColor.backgroundContainer);
+  static const TextStyle userName = TextStyle(
+      fontWeight: FontWeight.w600,
+      fontFamily: "Inter",
+      fontSize: 16,
+      color: AppColor.buttonColor);
 }

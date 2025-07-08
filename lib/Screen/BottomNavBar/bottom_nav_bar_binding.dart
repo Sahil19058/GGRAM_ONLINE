@@ -5,6 +5,7 @@ import '../Add_issue/add_issue_controller/report_road_controller.dart';
 import '../Analytics/analytics_controller/aile_gurugram_controller.dart';
 import '../Analytics/analytics_controller/analytics_heatmap_controller.dart';
 import '../Analytics/analytics_controller/ward_doing_controller.dart';
+import '../Analytics/analytics_controller/ward_total_issue_controller.dart';
 import '../home/home_controller/home_controller.dart';
 
 import '../info/info_controller/info_page_controller.dart';
@@ -22,6 +23,7 @@ class BottomNavBarBinding extends Bindings{
     Get.put(AlieGuruGramController());
     Get.put(ReportRoadController());
     Get.put(AddIssueController());
+    Get.put(WardTotalIssueController());
   }
 
 }

@@ -76,12 +76,46 @@ class InfoPageScreen extends GetView<InfoPageController> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              height: 32,
+              width: 85,
+              decoration: BoxDecoration(
+                color: AppColor.infoPageHeaderContainer,
+                borderRadius: BorderRadius.circular(7),
+              ),
+              child: const Center(child: Text("GMDA",style: AppTextStyles.infoContainerHeader,)),
+            ),
+            const SizedBox(
+              width: 16,
+            ),
+            Container(
+              height: 32,
+              width: 85,
+              decoration: BoxDecoration(
+                color: AppColor.buttonColor,
+                borderRadius: BorderRadius.circular(7),
+              ),
+              child: const Center(child: Text("GMC",style: AppTextStyles.infoContainerHeader,)),
+            ),
+          ],
+        ),
         TextFieldView(
           title: "Search Address",
           hintText: "Search here",
-          suffixIcon: Padding(
+          // suffixIcon: Padding(
+          //   padding: const EdgeInsets.all(12),
+          //   child: SvgPicture.asset("assets/icons/search.svg"),
+          // ),
+          suffixIcon: Container(
             padding: const EdgeInsets.all(12),
-            child: SvgPicture.asset("assets/icons/search.svg"),
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppColor.buttonColor
+            ),
+            child: SvgPicture.asset("assets/icons/search.svg",color: AppColor.backgroundContainer,),
           ),
         ),
         const SizedBox(height: 25),

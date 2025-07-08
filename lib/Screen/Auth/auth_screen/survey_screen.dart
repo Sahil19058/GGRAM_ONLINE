@@ -30,18 +30,23 @@ class SurveyScreen extends GetView<SurveyController> {
           padding: const EdgeInsets.only(top: 40, bottom: 20, left: 16, right: 16),
           child: LayoutBuilder(
             builder: (context, constraints) {
-              return SingleChildScrollView(
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: AppColor.backgroundContainer.withOpacity(0.8),
-                      borderRadius: BorderRadius.circular(40),
-                    ),
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+              return ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: AppColor.backgroundContainer.withOpacity(0.8),
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                  child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        SizedBox(
+                            height: 183,
+                            width: 113,
+                            child: Image.asset("assets/image/Survey_screen image.png")
+                        ),
                         const Text("Select the top 3 Issues in your City.", style: AppTextStyles.authTitle),
                         const SizedBox(height: 10),
                         CommonCheckboxView(
@@ -101,7 +106,7 @@ class SurveyScreen extends GetView<SurveyController> {
                                 activeTickMarkColor: AppColor.backgroundContainer,
                                 inactiveTickMarkColor: AppColor.backgroundContainer,
                                 // trackShape: _CustomVerticalThumb(), // Custom track!
-
+                    
                               ),
                               child: Slider(
                                 min: 0,
@@ -132,7 +137,7 @@ class SurveyScreen extends GetView<SurveyController> {
                           ],
                         );
                       }),
-
+                    
                       const SizedBox(height: 30),
                         Align(
                           alignment: Alignment.bottomCenter,

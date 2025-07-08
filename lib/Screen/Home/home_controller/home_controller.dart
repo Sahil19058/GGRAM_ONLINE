@@ -11,6 +11,25 @@ class HomeController extends GetxController {
   RxString currentSector = ''.obs;
   RxBool isMapLoaded = false.obs;
 
+
+  RxList<Map<String, dynamic>> issueList = [
+    {
+      // "image": "https://example.com/pothole.jpg", // Replace with actual URL or asset
+      "image": "assets/image/issue.png", // Replace with actual URL or asset
+      "title": "Pothole",
+      "ward": "Ward 21",
+      "sector": "Sector 65",
+      "counsellor": "Ajay Yadav",
+      "raised": "12:33, 12 September 2023",
+      "description": "Deep Pothole on the corner of extension and IFC. Creates hazard for Cars & Cyclists.",
+      "reportCount": 12,
+      "reporters": [
+        "https://example.com/anna.jpg", // Replace with actual reporter image URLs
+      ],
+      "status": "In Progress",
+    },
+  ].obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -94,5 +113,7 @@ class HomeController extends GetxController {
   //     print("❌ Error: $e");
   //   }
   // }
+
+
 
 }

@@ -103,6 +103,12 @@ flutter:
           weight: 700
         - asset: assets/fonts/Raleway-Medium.ttf
           weight: 600
+
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto_Condensed-Bold.ttf
+          weight: 700
+
     - family: Nunito Sans
       fonts:
         - asset: assets/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf

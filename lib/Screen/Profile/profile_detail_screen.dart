@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:ggram_online/Screen/profile/profile_controller/profile_detail_controller.dart';
 import 'package:ggram_online/Widgets/common_appbar.dart';
+import 'package:ggram_online/Widgets/common_button.dart';
 import '../../Routes/route_name.dart';
 import '../../Theme/app_color.dart';
 import '../../Theme/app_textstyle.dart';
@@ -26,19 +27,6 @@ class ProfileDetailScreen extends GetView<ProfileDetailController> {
         appBar: CommonAppBar(
           title: "Profile Details",
           centerTitle: true,
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 16),
-              child: GestureDetector(
-                  onTap: () {
-                    Get.toNamed(RouteName.editProfileScreen);
-                  },
-                  child: SvgPicture.asset(
-                    "assets/icons/Edit.svg",
-                    color: AppColor.textPrimary,
-                  )),
-            )
-          ],
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -94,19 +82,41 @@ class ProfileDetailScreen extends GetView<ProfileDetailController> {
           const SizedBox(
             height: 24,
           ),
-          Container(
-            // margin: EdgeInsets.only(left: 180),
-            height: 54,
-            width: 197,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadiusGeometry.circular(30),
-                border: Border.all(color: AppColor.textSecondary)),
-            child: const Center(
-              child: Text(
-                "Delete Account",
-                style: AppTextStyles.splashSubTitle,
+          Row(
+            children: [
+              // Expanded(
+              //   child: Container(
+              //     // margin: EdgeInsets.only(left: 180),
+              //     height: 54,
+              //     decoration: BoxDecoration(
+              //         borderRadius: BorderRadiusGeometry.circular(30),
+              //         border: Border.all(color: AppColor.textSecondary)),
+              //     child: const Center(
+              //       child: Text(
+              //         "Delete Account",
+              //         style: AppTextStyles.splashSubTitle,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              Expanded(
+                child: InnerShadowButton(text: "Edit Profile", onPressed: () {
+                  Get.toNamed(RouteName.editProfileScreen);
+                },),
               ),
-            ),
+              const SizedBox(width: 12,),
+              Container(
+                height: 54,
+                width: 54,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColor.buttonColor
+                ),
+                child: Center(
+                  child: SvgPicture.asset("assets/icons/delete.svg"),
+                ),
+              )
+            ],
           )
         ],
       ),

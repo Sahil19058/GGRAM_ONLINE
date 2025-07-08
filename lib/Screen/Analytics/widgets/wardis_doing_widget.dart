@@ -2,6 +2,7 @@ import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import '../../../Routes/route_name.dart';
 import '../../../Theme/app_color.dart';
 import '../../../Theme/app_textstyle.dart';
 import '../../../Widgets/common_textfield.dart';
@@ -17,81 +18,95 @@ class WardIsDoingWidget extends GetView<WardDoingController> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-              ),
-              height: 55,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: AppColor.backgroundContainer,
-                borderRadius: BorderRadius.circular(40),
-                boxShadow: [
-                  BoxShadow(
-                    offset: const Offset(0, -4),
-                    blurRadius: 10,
-                    spreadRadius: 0,
-                    color: Colors.grey.shade300,
-                    inset: true,
-                    blurStyle: BlurStyle.inner,
-                  ),
-                ]
-              ),
-              child: Row(
-                children: [
-                  SvgPicture.asset(
-                    'assets/icons/location.svg',
-                    height: 24,
-                    width: 24,
-                  ),
-                  const SizedBox(
-                    width: 8,
-                  ),
-                  const Text(
-                    "Current Location",
-                    style: AppTextStyles.currentLocation,
-                  ),
-                  const Spacer(),
-                  const Text(
-                    "Ward 21",
-                    style: AppTextStyles.currentLocationWard,
-                  )
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 22,
-            ),
+            // Container(
+            //   padding: const EdgeInsets.symmetric(
+            //     horizontal: 16,
+            //   ),
+            //   height: 55,
+            //   width: double.infinity,
+            //   decoration: BoxDecoration(
+            //     color: AppColor.backgroundContainer,
+            //     borderRadius: BorderRadius.circular(40),
+            //     boxShadow: [
+            //       BoxShadow(
+            //         offset: const Offset(0, -4),
+            //         blurRadius: 10,
+            //         spreadRadius: 0,
+            //         color: Colors.grey.shade300,
+            //         inset: true,
+            //         blurStyle: BlurStyle.inner,
+            //       ),
+            //     ]
+            //   ),
+            //   child: Row(
+            //     children: [
+            //       SvgPicture.asset(
+            //         'assets/icons/location.svg',
+            //         height: 24,
+            //         width: 24,
+            //       ),
+            //       const SizedBox(
+            //         width: 8,
+            //       ),
+            //       const Text(
+            //         "Current Location",
+            //         style: AppTextStyles.currentLocation,
+            //       ),
+            //       const Spacer(),
+            //       const Text(
+            //         "Ward 21",
+            //         style: AppTextStyles.currentLocationWard,
+            //       )
+            //     ],
+            //   ),
+            // ),
+            // const SizedBox(
+            //   height: 22,
+            // ),
             TextFieldView(
-              title: "Search Address",
-              hintText: "Search here",
-              suffixIcon: Padding(
+              // title: "Search Address",
+              hintText: "Current Location",
+              // suffixIcon: Padding(
+              //   padding: const EdgeInsets.all(12),
+              //   child: SvgPicture.asset("assets/icons/search.svg"),
+              // ),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: SvgPicture.asset("assets/icons/location.svg"),
+              ),
+              suffixIcon: Container(
                 padding: const EdgeInsets.all(12),
-                child: SvgPicture.asset("assets/icons/search.svg"),
+                decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppColor.buttonColor
+                ),
+                child: SvgPicture.asset("assets/icons/search.svg",color: AppColor.backgroundContainer,),
               ),
             ),
             const SizedBox(
               height: 20,
             ),
-            Container(
-              height: 70,
-              margin: const EdgeInsets.symmetric(vertical: 5),
-              decoration: BoxDecoration(
-                border: Border.all(color: AppColor.outlineMinimal, width: 1),
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    offset: const Offset(0, 4),
-                    blurRadius: 4,
-                    spreadRadius: 0,
-                    color: Colors.grey.shade200,
-                  ),
-                ],
-              ),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(RouteName.wardTotalIssueScreen);
+              },
               child: Container(
-                width: double.infinity,
+                height: 70,
+                margin: const EdgeInsets.symmetric(vertical: 5),
                 padding: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColor.outlineMinimal, width: 1),
+                  color: AppColor.backgroundContainer,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: const Offset(0, 4),
+                      blurRadius: 4,
+                      spreadRadius: 0,
+                      color: Colors.grey.shade200,
+                    ),
+                  ],
+                ),
                 child: const Center(
                     child: Row(
                   children: [
@@ -107,27 +122,29 @@ class WardIsDoingWidget extends GetView<WardDoingController> {
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 8,
             ),
-            Container(
-              height: 70,
-              margin: const EdgeInsets.symmetric(vertical: 5),
-              decoration: BoxDecoration(
-                border: Border.all(color: AppColor.outlineMinimal, width: 1),
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    offset: const Offset(0, 4),
-                    blurRadius: 4,
-                    spreadRadius: 0,
-                    color: Colors.grey.shade200,
-                  ),
-                ],
-              ),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(RouteName.wardTotalIssueScreen);
+              },
               child: Container(
-                width: double.infinity,
+                height: 70,
+                margin: const EdgeInsets.symmetric(vertical: 5),
                 padding: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColor.outlineMinimal, width: 1),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: const Offset(0, 4),
+                      blurRadius: 4,
+                      spreadRadius: 0,
+                      color: Colors.grey.shade200,
+                    ),
+                  ],
+                ),
                 child: const Center(
                     child: Row(
                   children: [
@@ -143,7 +160,7 @@ class WardIsDoingWidget extends GetView<WardDoingController> {
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 8,
             ),
             Container(
               height: 70,

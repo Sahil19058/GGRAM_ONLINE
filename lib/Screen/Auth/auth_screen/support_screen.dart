@@ -29,8 +29,8 @@ class SupportScreen extends GetView<SupportController> {
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.transparent,
         body: Container(
-          margin:
-              const EdgeInsets.only(top: 40, bottom: 20, left: 16, right: 16),
+          margin: const EdgeInsets.only(top: 40, bottom: 20, left: 16, right: 16),
+          padding: EdgeInsets.symmetric(vertical: 20),
           decoration: BoxDecoration(
             color: AppColor.backgroundContainer.withValues(alpha: 0.8),
             borderRadius: BorderRadius.circular(40),
@@ -41,6 +41,11 @@ class SupportScreen extends GetView<SupportController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(
+                      height: 183,
+                      width: 113,
+                      child: Image.asset("assets/image/Support_screen_image.png")
+                  ),
                   Row(
                     children: [
                       const Text(

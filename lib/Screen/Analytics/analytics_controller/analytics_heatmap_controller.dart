@@ -6,6 +6,9 @@ import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class HeatmapController extends GetxController {
+  RxInt selectedIndex = 0.obs;
+  List<String> views = ["Ward View", "Zone View", "Sector View"];
+
   final RxInt currentPage = 0.obs;
   final PageController pageController = PageController();
   late GoogleMapController mapController;
