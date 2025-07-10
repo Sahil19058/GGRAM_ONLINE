@@ -101,7 +101,7 @@ class ProfileDetailScreen extends GetView<ProfileDetailController> {
               // ),
               Expanded(
                 child: InnerShadowButton(text: "Edit Profile", onPressed: () {
-                  Get.toNamed(RouteName.editProfileScreen);
+                  Get.toNamed(AppRoutes.editProfileScreen);
                 },),
               ),
               const SizedBox(width: 12,),

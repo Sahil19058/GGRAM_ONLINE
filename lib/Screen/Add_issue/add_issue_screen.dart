@@ -184,8 +184,8 @@ class AddIssueScreen extends GetView<AddIssueController> {
                 _buildContainer("assets/icons/road.svg", "Report Road \nIssue",
                     () {
                   // Handle tap
-                  // Get.toNamed(RouteName.reportRoadScreen);
-                  Get.toNamed(RouteName.uploadImageScreen);
+                  // Get.toNamed(AppRoutes.reportRoadScreen);
+                  Get.toNamed(AppRoutes.uploadImageScreen);
                 }),
                 const SizedBox(width: 16),
                 _buildContainer("assets/icons/road.svg", "Report Road \nIssue",

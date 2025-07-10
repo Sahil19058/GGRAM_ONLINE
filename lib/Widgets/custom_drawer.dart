@@ -40,7 +40,7 @@ class CustomSideDrawer extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.toNamed(RouteName.profileDetailScreen);
+                      Get.toNamed(AppRoutes.profileDetailScreen);
                     },
                     child: const CircleAvatar(
                       radius: 30,
@@ -63,13 +63,13 @@ class CustomSideDrawer extends StatelessWidget {
             // Drawer Items
             // _drawerItem("editProfile.svg", "Edit Profile", () {
             //   Get.back();
-            //   Get.toNamed(RouteName.editProfileScreen);
+            //   Get.toNamed(AppRoutes.editProfileScreen);
             // }),
             _drawerItem("FAQ.svg", "FAQ", () {
-              Get.toNamed(RouteName.faqScreen);
+              Get.toNamed(AppRoutes.faqScreen);
             }),
             _drawerItem("contactUs.svg", "Contact Us", () {
-              Get.toNamed(RouteName.contactUsScreen);
+              Get.toNamed(AppRoutes.contactUsScreen);
             }),
             _drawerItem("aboutUs.svg", "About Us", () {}),
             _drawerItem("tellAFriend.svg", "Tell a Friend", () {}),

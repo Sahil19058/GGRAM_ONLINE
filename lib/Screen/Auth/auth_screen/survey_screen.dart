@@ -144,7 +144,7 @@ class SurveyScreen extends GetView<SurveyController> {
                           child: InnerShadowButton(
                             text: "Submit",
                             onPressed: () {
-                              Get.toNamed(RouteName.supportScreen);
+                              Get.toNamed(AppRoutes.supportScreen);
                             },
                           ),
                         ),

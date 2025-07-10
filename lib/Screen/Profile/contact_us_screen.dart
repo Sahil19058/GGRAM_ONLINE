@@ -41,7 +41,7 @@ class ContactUsScreen extends GetView<ContactUsController> {
                   title: "Thank You",
                   subtitle: "Thank you! We will get back to you soon!",
                   onContinue: () {
-                    Get.offAllNamed(RouteName.bottomNavBar);
+                    Get.offAllNamed(AppRoutes.bottomNavBar);
                   },
                   showButton: true,
                   buttonText: "Okay",

@@ -88,7 +88,7 @@ class WardIsDoingWidget extends GetView<WardDoingController> {
             ),
             GestureDetector(
               onTap: () {
-                Get.toNamed(RouteName.wardTotalIssueScreen);
+                Get.toNamed(AppRoutes.wardTotalIssueScreen);
               },
               child: Container(
                 height: 70,
@@ -126,7 +126,7 @@ class WardIsDoingWidget extends GetView<WardDoingController> {
             ),
             GestureDetector(
               onTap: () {
-                Get.toNamed(RouteName.wardTotalIssueScreen);
+                Get.toNamed(AppRoutes.wardTotalIssueScreen);
               },
               child: Container(
                 height: 70,

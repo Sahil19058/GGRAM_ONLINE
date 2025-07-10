@@ -141,7 +141,7 @@ class SupportScreen extends GetView<SupportController> {
                           subtitle:
                               "Let’s improve our city for a brighter future.",
                           onContinue: () =>
-                              Get.offAllNamed(RouteName.bottomNavBar),
+                              Get.offAllNamed(AppRoutes.bottomNavBar),
                           showButton: true,
                         ),
                       );

@@ -51,7 +51,7 @@ class IntroductionScreen extends GetView<IntroductionController> {
                         const Spacer(),
                         GestureDetector(
                           onTap: () {
-                            Get.toNamed(RouteName.surveyScreen);
+                            Get.toNamed(AppRoutes.surveyScreen);
                           },
                           child: const Text(
                             "Skip",
@@ -256,7 +256,7 @@ class IntroductionScreen extends GetView<IntroductionController> {
                       text: "Submit",
                       onPressed: () {
                         // if (controller.validateForm()) {
-                        Get.toNamed(RouteName.surveyScreen);
+                        Get.toNamed(AppRoutes.surveyScreen);
                         // } else {
                         //   Get.snackbar("Validation Error", "Please fill all fields correctly",
                         //     backgroundColor: Colors.redAccent.withOpacity(0.8),

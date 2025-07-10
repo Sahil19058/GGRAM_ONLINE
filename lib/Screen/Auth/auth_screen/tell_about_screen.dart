@@ -92,7 +92,7 @@ class TellAboutScreen extends GetView<TellAboutController> {
                       text: "Submit",
                       onPressed: () {
                         // if (controller.validateForm()) {
-                        Get.toNamed(RouteName.introductionScreen,
+                        Get.toNamed(AppRoutes.introductionScreen,
                             arguments: controller.name.text);
                         // } else {
                         //   Get.snackbar("Validation Error", "Please fill all fields correctly",

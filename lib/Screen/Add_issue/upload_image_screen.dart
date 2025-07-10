@@ -45,7 +45,7 @@ class UploadImageScreen extends GetView<UploadImageController> {
                     onTap: controller.isLocked.value
                       ? (){
                         print("pickedImage value: ${controller.pickedImage.value}");
-                        Get.toNamed(RouteName.reportRoadScreen,arguments: controller.pickedImage.value);}
+                        Get.toNamed(AppRoutes.reportRoadScreen,arguments: controller.pickedImage.value);}
                       : () async => await controller.pickFromCamera(),
                     child: Container(
                       height: 80,

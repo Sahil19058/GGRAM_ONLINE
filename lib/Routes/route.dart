@@ -46,108 +46,108 @@ import '../Screen/profile/profile_detail_screen.dart';
 class AppRoute {
   static routes() => [
         GetPage(
-            name: RouteName.splashScreen,
+            name: AppRoutes.splashScreen,
             page: () => const SplashScreen(),
             transition: Transition.rightToLeft,
             binding: SplashBinding()
         ),
         GetPage(
-            name: RouteName.loginScreen,
+            name: AppRoutes.loginScreen,
             page: () => const LoginScreen(),
             binding: LoginBinding()
         ),
         GetPage(
-            name: RouteName.otpScreen,
+            name: AppRoutes.otpScreen,
             page: () => const OtpScreen(),
             binding: OtpBinding()
         ),
         GetPage(
-            name: RouteName.introductionScreen,
+            name: AppRoutes.introductionScreen,
             page: () => const IntroductionScreen(),
             binding: IntroductionBinding()
         ),
         GetPage(
-            name: RouteName.surveyScreen,
+            name: AppRoutes.surveyScreen,
             page: () => const SurveyScreen(),
             binding: SurveyBinding()
         ),
         GetPage(
-            name: RouteName.supportScreen,
+            name: AppRoutes.supportScreen,
             page: () => const SupportScreen(),
             binding: SupportBinding()
         ),
         GetPage(
-            name: RouteName.bottomNavBar,
+            name: AppRoutes.bottomNavBar,
             page: () => const BottomNavBar(),
             binding: BottomNavBarBinding()
         ),
         GetPage(
-            name: RouteName.homeScreen,
+            name: AppRoutes.homeScreen,
             page: () => const HomeScreen(),
             binding: HomeBinding()
         ),
         GetPage(
-            name: RouteName.reportRoadScreen,
+            name: AppRoutes.reportRoadScreen,
             page: () => ReportRoadScreen(),
             binding: ReportRoadBinding()
         ),
         GetPage(
-            name: RouteName.uploadImageScreen,
+            name: AppRoutes.uploadImageScreen,
             page: () => const UploadImageScreen(),
             binding: UploadImageBinding()
         ),
         GetPage(
-            name: RouteName.infoPageScreen,
+            name: AppRoutes.infoPageScreen,
             page: () => InfoPageScreen(),
             binding: InfoPageBinding()
         ),
         GetPage(
-            name: RouteName.officialDetailScreen,
+            name: AppRoutes.officialDetailScreen,
             page: () => const OfficialDetailScreen(),
             binding: OfficialDetailBining()
         ),
         GetPage(
-            name: RouteName.profileDetailScreen,
+            name: AppRoutes.profileDetailScreen,
             page: () => const ProfileDetailScreen(),
             binding: ProfileDetailBinding()
         ),
         GetPage(
-            name: RouteName.editProfileScreen,
+            name: AppRoutes.editProfileScreen,
             page: () => const EditProfileScreen(),
             binding: EditProfileBinding()
         ),
         GetPage(
-            name: RouteName.faqScreen,
+            name: AppRoutes.faqScreen,
             page: () => const FaqScreen(),
             binding: FaqBinding()
         ),
         GetPage(
-            name: RouteName.contactUsScreen,
+            name: AppRoutes.contactUsScreen,
             page: () => const ContactUsScreen(),
             binding: ContactUsBinding()
         ),
         GetPage(
-            name: RouteName.issueDetailScreen,
+            name: AppRoutes.issueDetailScreen,
             page: () => const IssueDetailScreen(),
             binding: IssueDetailBinding()
         ),
         GetPage(
-            name: RouteName.tellAboutScreen,
+            name: AppRoutes.tellAboutScreen,
             page: () => const TellAboutScreen(),
             binding: TellAboutBinding()
         ),
         GetPage(
-            name: RouteName.addIssueScreen,
+            name: AppRoutes.addIssueScreen,
             page: () => const AddIssueScreen(),
             binding: AddIssueBinding()
         ),
         GetPage(
-            name: RouteName.yourReportedIssueScreen,
+            name: AppRoutes.yourReportedIssueScreen,
             page: () => const YourReportedIssueScreen(),
             binding: YourReportedIssueBinding()
         ),
         GetPage(
-            name: RouteName.wardTotalIssueScreen,
+            name: AppRoutes.wardTotalIssueScreen,
             page: () => const WardTotalIssueScreen(),
             binding: WardTotalIssueBinding()
         ),

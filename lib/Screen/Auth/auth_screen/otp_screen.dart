@@ -35,7 +35,7 @@ class OtpScreen extends GetView<OtpController> {
   Widget _buildBody(context,isKeyboardVisible){
     return Container(
       height: double.infinity,
-        margin: EdgeInsets.only(top: 40, bottom: 20, left: 16, right: 16),
+        margin: const EdgeInsets.only(top: 40, bottom: 20, left: 16, right: 16),
         decoration: BoxDecoration(
           color: AppColor.backgroundContainer.withValues(alpha: 0.8),
           borderRadius: BorderRadius.circular(40),
@@ -72,6 +72,7 @@ class OtpScreen extends GetView<OtpController> {
               const SizedBox(height: 8),
               Pinput(
                 length: 6,
+                controller: controller.otpController,
                 defaultPinTheme: PinTheme(
                   width: 54,
                   height: 48,
@@ -131,7 +132,7 @@ class OtpScreen extends GetView<OtpController> {
               InnerShadowButton(
                 text: "Submit",
                 onPressed: () {
-                  Get.toNamed(RouteName.tellAboutScreen);
+                  Get.toNamed(AppRoutes.tellAboutScreen);
                 },
               ),
               SizedBox(

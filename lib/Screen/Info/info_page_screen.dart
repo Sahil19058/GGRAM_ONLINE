@@ -139,7 +139,7 @@ class InfoPageScreen extends GetView<InfoPageController> {
             final official = controller.officials[index];
             return GestureDetector(
               onTap: () {
-                Get.toNamed(RouteName.officialDetailScreen,
+                Get.toNamed(AppRoutes.officialDetailScreen,
                     arguments: official
                 );
               },

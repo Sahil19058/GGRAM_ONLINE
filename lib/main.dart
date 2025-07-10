@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Ggram Online',
       debugShowCheckedModeBanner: false,
-      initialRoute: RouteName.splashScreen,
+      initialRoute: AppRoutes.splashScreen,
       getPages: AppRoute.routes(),
       builder: (context, child) => GestureDetector(
         onTap: () {

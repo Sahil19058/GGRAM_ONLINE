@@ -255,7 +255,7 @@ class IssueDetailScreen extends GetView<IssueDetailController> {
                                 text: "Yes",
                                 onPressed: () {
                                   // Step 1: Navigate to bottom navbar
-                                  Get.offAllNamed(RouteName.bottomNavBar);
+                                  Get.offAllNamed(AppRoutes.bottomNavBar);
 
                                   // Step 2: Show dialog after navigation completes
                                   Future.delayed(const Duration(milliseconds: 300), () {
@@ -290,7 +290,7 @@ class IssueDetailScreen extends GetView<IssueDetailController> {
                             )
                           ],
                         ),
-                        // Get.offAllNamed(RouteName.bottomNavBar),
+                        // Get.offAllNamed(AppRoutes.bottomNavBar),
                         // showButton: true,
                       ));
                     },
@@ -307,7 +307,7 @@ class IssueDetailScreen extends GetView<IssueDetailController> {
             text: "NO - My issue is different",
             onPressed: () {
               // Step 1: Navigate to bottom navbar
-              Get.offAllNamed(RouteName.bottomNavBar);
+              Get.offAllNamed(AppRoutes.bottomNavBar);
 
               // Step 2: Show dialog after navigation completes
               Future.delayed(const Duration(milliseconds: 300), () {

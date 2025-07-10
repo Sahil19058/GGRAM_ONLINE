@@ -44,7 +44,7 @@ class ReportRoadScreen extends GetView<ReportRoadController> {
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 40),
               child: InnerShadowButton(
                 onPressed: () {
-                  Get.toNamed(RouteName.issueDetailScreen,);
+                  Get.toNamed(AppRoutes.issueDetailScreen,);
                 },
                 text: "Submit",
               ),
@@ -109,7 +109,7 @@ class ReportRoadScreen extends GetView<ReportRoadController> {
           children: [
             Obx(() {
               return GestureDetector(
-                onTap: () => Get.toNamed(RouteName.uploadImageScreen),
+                onTap: () => Get.toNamed(AppRoutes.uploadImageScreen),
                 child: Container(
                   height: 186,
                   width: 198,

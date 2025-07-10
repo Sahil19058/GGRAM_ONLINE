@@ -106,7 +106,7 @@ class LoginScreen extends GetView<LoginController> {
             InnerShadowButton(
               text: "LOGIN",
               onPressed: () {
-                Get.toNamed(RouteName.otpScreen);
+                Get.toNamed(AppRoutes.otpScreen);
               },
             ),
             const SizedBox(
