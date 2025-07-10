@@ -218,6 +218,7 @@ class HomeScreen extends GetView<HomeController> {
                     ),
                     TextFieldView(
                       hintText: "Comment here",
+                      maxLines: 1,
                       // suffixIcon: SvgPicture.asset("assets/image/profile_image.png"),
                       prefixIcon: Padding(
                         padding: const EdgeInsets.all(8.0),
