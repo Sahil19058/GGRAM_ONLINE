@@ -129,21 +129,26 @@ class LoginScreen extends GetView<LoginController> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Card(
-                  elevation: 5,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40)),
-                  child: Container(
-                    height: 79,
-                    width: 79,
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: AppColor.backgroundContainer),
-                    child: Center(
-                      child: Image.asset(
-                        'assets/image/google.png',
-                        height: 30,
-                        width: 30,
+                InkWell(
+                  onTap: (){
+                    controller.loginWithGoogle();
+                  },
+                  child: Card(
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(40)),
+                    child: Container(
+                      height: 79,
+                      width: 79,
+                      decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppColor.backgroundContainer),
+                      child: Center(
+                        child: Image.asset(
+                          'assets/image/google.png',
+                          height: 30,
+                          width: 30,
+                        ),
                       ),
                     ),
                   ),

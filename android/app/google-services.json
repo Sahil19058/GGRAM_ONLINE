@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "642280749192",
+    "project_id": "gurugram-4c62e",
+    "storage_bucket": "gurugram-4c62e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642280749192:android:73a58afe7f659bfb5ec73d",
+        "android_client_info": {
+          "package_name": "com.example.ggram_online"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIHXR2PX-ilfL4YMIdbeOTrvzAObTEoYw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
